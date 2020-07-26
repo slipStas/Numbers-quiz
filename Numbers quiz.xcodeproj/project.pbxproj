@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */; };
 		8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */; };
-		8EFB41D624CD9F580085BDA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D524CD9F580085BDA5 /* ViewController.swift */; };
 		8EFB41D924CD9F580085BDA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41D724CD9F580085BDA5 /* Main.storyboard */; };
 		8EFB41DC24CD9F580085BDA5 /* Numbers_quiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41DA24CD9F580085BDA5 /* Numbers_quiz.xcdatamodeld */; };
 		8EFB41DE24CD9F5C0085BDA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41DD24CD9F5C0085BDA5 /* Assets.xcassets */; };
 		8EFB41E124CD9F5C0085BDA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41DF24CD9F5C0085BDA5 /* LaunchScreen.storyboard */; };
+		8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */; };
+		8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8EFB41CE24CD9F580085BDA5 /* Numbers quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Numbers quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8EFB41D524CD9F580085BDA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EFB41D824CD9F580085BDA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EFB41DB24CD9F580085BDA5 /* Numbers_quiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Numbers_quiz.xcdatamodel; sourceTree = "<group>"; };
 		8EFB41DD24CD9F5C0085BDA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EFB41E024CD9F5C0085BDA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EFB41E224CD9F5C0085BDA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButtonModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +60,10 @@
 		8EFB41D024CD9F580085BDA5 /* Numbers quiz */ = {
 			isa = PBXGroup;
 			children = (
+				8EFB41EC24CDAA3D0085BDA5 /* Models */,
 				8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */,
 				8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */,
-				8EFB41D524CD9F580085BDA5 /* ViewController.swift */,
+				8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */,
 				8EFB41D724CD9F580085BDA5 /* Main.storyboard */,
 				8EFB41DD24CD9F5C0085BDA5 /* Assets.xcassets */,
 				8EFB41DF24CD9F5C0085BDA5 /* LaunchScreen.storyboard */,
@@ -68,6 +71,14 @@
 				8EFB41DA24CD9F580085BDA5 /* Numbers_quiz.xcdatamodeld */,
 			);
 			path = "Numbers quiz";
+			sourceTree = "<group>";
+		};
+		8EFB41EC24CDAA3D0085BDA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +152,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EFB41D624CD9F580085BDA5 /* ViewController.swift in Sources */,
+				8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */,
 				8EFB41DC24CD9F580085BDA5 /* Numbers_quiz.xcdatamodeld in Sources */,
 				8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */,
 				8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */,
+				8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
