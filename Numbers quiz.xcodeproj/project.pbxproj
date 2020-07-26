@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */; };
 		8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */; };
 		8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */; };
 		8EFB41D924CD9F580085BDA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41D724CD9F580085BDA5 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8EFB41CE24CD9F580085BDA5 /* Numbers quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Numbers quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */,
 				8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */,
 				8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */,
+				8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */,
 				8EFB41D724CD9F580085BDA5 /* Main.storyboard */,
 				8EFB41DD24CD9F5C0085BDA5 /* Assets.xcassets */,
 				8EFB41DF24CD9F5C0085BDA5 /* LaunchScreen.storyboard */,
@@ -157,6 +160,7 @@
 				8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */,
 				8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */,
 				8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */,
+				8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

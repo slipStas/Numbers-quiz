@@ -46,8 +46,7 @@ class NumberButtonModel: UIButton {
     }
     
     @objc func touchDownNumberButton(sender: UIButton) {
-        guard let titleText = sender.titleLabel?.text else {return}
-        print("touch down <\(titleText)> button")
+//        guard let titleText = sender.titleLabel?.text else {return}
         
         UIView.animate(withDuration: 0.05, animations: {
             sender.transform = CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95)
@@ -55,8 +54,7 @@ class NumberButtonModel: UIButton {
     }
     
     @objc func touchUpNumberButton(sender: UIButton) {
-           guard let titleText = sender.titleLabel?.text else {return}
-           print("touch up <\(titleText)> button")
+//           guard let titleText = sender.titleLabel?.text else {return}
            
            UIView.animate(withDuration: 0.05, animations: {
                sender.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
