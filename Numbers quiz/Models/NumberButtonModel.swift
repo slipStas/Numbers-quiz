@@ -21,7 +21,8 @@ class NumberButtonModel: UIButton {
     }
     
     func setupButton() {
-        addTarget(self, action: #selector(tapOnNumberButton(sender:)), for: .touchDown)
+        addTarget(self, action: #selector(touchDownNumberButton(sender:)), for: .touchDown)
+        addTarget(self, action: #selector(touchUpNumberButton(sender:)), for: .touchUpInside)
         styleButton()
     }
     
@@ -44,15 +45,21 @@ class NumberButtonModel: UIButton {
         layer.masksToBounds = false
     }
     
-    @objc func tapOnNumberButton(sender: UIButton) {
+    @objc func touchDownNumberButton(sender: UIButton) {
         guard let titleText = sender.titleLabel?.text else {return}
-        print("tap the <\(titleText)> button")
+        print("touch down <\(titleText)> button")
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse], animations: {
-            sender.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1)
-        }) { state in
-            sender.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
-        }
-        
+        UIView.animate(withDuration: 0.05, animations: {
+            sender.transform = CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95)
+        })
     }
+    
+    @objc func touchUpNumberButton(sender: UIButton) {
+           guard let titleText = sender.titleLabel?.text else {return}
+           print("touch up <\(titleText)> button")
+           
+           UIView.animate(withDuration: 0.05, animations: {
+               sender.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
+           })
+       }
 }
