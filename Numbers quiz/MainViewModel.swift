@@ -28,7 +28,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     var startStopStatus: ((StartStopStatus) -> Void)?
     var mathProblem: ((String) -> Void)?
     
-    init(status: StartStopStatus, startStopStatus: @escaping ((StartStopStatus) -> Void)) {
+    init(status: StartStopStatus, startStopStatus: @escaping (StartStopStatus) -> Void) {
         self.status = status
         self.startStopStatus = startStopStatus
         startStopStatus(status)
