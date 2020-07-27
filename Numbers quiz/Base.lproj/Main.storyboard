@@ -138,7 +138,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxB-0h-I9O" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="202.5" height="51"/>
                                         <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Start"/>
+                                        <state key="normal" title="11"/>
                                         <connections>
                                             <action selector="startStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TM0-4j-fuB"/>
                                         </connections>
@@ -193,6 +193,7 @@
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="76V-EV-SWH" id="YUT-pN-uOy"/>
+                        <outlet property="startStopButton" destination="vxB-0h-I9O" id="Brp-Gs-eWO"/>
                         <outlet property="taskLabel" destination="6KD-pM-Ztx" id="Cbp-Yo-Ltk"/>
                     </connections>
                 </viewController>
