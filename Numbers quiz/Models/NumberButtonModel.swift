@@ -46,7 +46,16 @@ class NumberButtonModel: UIButton {
     }
     
     @objc func touchDownNumberButton(sender: UIButton) {
-//        guard let titleText = sender.titleLabel?.text else {return}
+        
+        guard let titleTextButton = sender.titleLabel?.text else {return}
+        
+        switch titleTextButton {
+        case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            print(titleTextButton)
+            Session.shared.userAnswer += titleTextButton
+        default:
+            break
+        }
         
         UIView.animate(withDuration: 0.05, animations: {
             sender.transform = CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95)

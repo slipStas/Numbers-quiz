@@ -17,10 +17,15 @@ enum Operation: String {
 
 class MathProblemModel {
     
-    var leftNumber: Int?
-    var rightNumber: Int?
+    var leftNumber: Int = 0
+    var rightNumber: Int = 0
     var operation: Operation?
-    var result: Int?
+    var result: Int = 0 {
+        didSet {
+            stringResult = String(result)
+        }
+    }
+    var stringResult: String = ""
     var fullMathProblem: String?
     
     private func whatTheOperation() {
@@ -59,9 +64,6 @@ class MathProblemModel {
     }
     private func generateFirstSecondNumbersForDiv() {
         leftNumber = noZero(number: (Int(arc4random_uniform(10))))
-        
-        guard let leftNumber = leftNumber else {return}
-        
         rightNumber = leftNumber * noZero(number: (Int(arc4random_uniform(10))))
     }
     private func generateFirstSecondNumbersForMult() {
@@ -70,10 +72,6 @@ class MathProblemModel {
         rightNumber = noZero(number: Int(arc4random_uniform(10)))
     }
     private func generateRandomNumbers() {
-        
-        guard let leftNumber = leftNumber else {return}
-        guard let rightNumber = rightNumber else {return}
-        
         switch operation {
         case .subt:
             generateFirstSecondNumbersNoDiv()
@@ -103,8 +101,6 @@ class MathProblemModel {
     private func makeFullMathProblem() {
         
         guard let operation = self.operation else {return}
-        guard let leftNumber = leftNumber else {return}
-        guard let rightNumber = rightNumber else {return}
         
         if operation == Operation.subt && leftNumber < rightNumber || operation == Operation.div {
             fullMathProblem = String(rightNumber) + operation.rawValue + String(leftNumber) + "  ="

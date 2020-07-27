@@ -34,10 +34,8 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         startStopStatus(status)
     }
     
-    var leftNumber: Int?
-    var rightNumber: Int?
-    var operation: Operation?
-    var result: Int?
+    var math = MathProblemModel()
+    
     var status: StartStopStatus {
         didSet {
             print(status.rawValue)
@@ -51,16 +49,21 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     }
     
     func start() {
-        readyMathProblem = "12 + 4 =" // for debbug
+        math.generateFullMathProblem()
+        readyMathProblem = math.fullMathProblem ?? "error"
         status = .stop
     }
     
     func check() {
         print("check")
+        
+        if Session.shared.userAnswer == math.stringResult {
+            print("bingo!")
+        }
     }
     
     func stop() {
-        readyMathProblem = "stopped" // for debbug
+        readyMathProblem = "stopped" 
         status = .start
     }
     
