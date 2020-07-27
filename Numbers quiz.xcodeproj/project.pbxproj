@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E06161324CF5A3900A0FEF4 /* MathProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */; };
 		8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */; };
 		8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */; };
 		8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblemModel.swift; sourceTree = "<group>"; };
 		8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8EFB41CE24CD9F580085BDA5 /* Numbers quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Numbers quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */,
+				8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */,
+				8E06161324CF5A3900A0FEF4 /* MathProblemModel.swift in Sources */,
 				8EFB41DC24CD9F580085BDA5 /* Numbers_quiz.xcdatamodeld in Sources */,
 				8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */,
 				8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */,

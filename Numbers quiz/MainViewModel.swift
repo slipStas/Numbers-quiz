@@ -34,10 +34,10 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         startStopStatus(status)
     }
     
-    var leftNumber: Int = 0
-    var rightNumber: Int = 0
-    var operation = ""
-    var result: Int = 0
+    var leftNumber: Int?
+    var rightNumber: Int?
+    var operation: Operation?
+    var result: Int?
     var status: StartStopStatus {
         didSet {
             print(status.rawValue)
@@ -63,6 +63,5 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         readyMathProblem = "stopped" // for debbug
         status = .start
     }
-    
     
 }
