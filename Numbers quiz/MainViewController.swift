@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var countTrueAnswersLabel: UILabel!
     @IBOutlet weak var countFalseAnswersLabel: UILabel!
     
-    
     @IBOutlet weak var startStopButton: NumberButtonModel!
     
     override func viewDidLoad() {
@@ -47,8 +46,18 @@ class MainViewController: UIViewController {
         
     }
     
-    @IBAction func startStop(_ sender: Any) {
+    @IBAction func backspaseButton(_ sender: UIButton) {
         
+        sender.feedback()
+        if (answerLabel.text?.count)! > 0 && Session.shared.userAnswer.count > 0 {
+            answerLabel.text!.removeLast()
+            Session.shared.userAnswer.removeLast()
+        }
+    }
+    
+    @IBAction func startStop(_ sender: UIButton) {
+        
+        sender.feedback()
         switch viewModel?.statusStartStop {
         case .start:
             viewModel?.start()
@@ -65,7 +74,9 @@ class MainViewController: UIViewController {
         
     }
     
-    @IBAction func check(_ sender: Any) {
+    @IBAction func check(_ sender: UIButton) {
+        
+        sender.feedback()
         viewModel?.check()
         self.answerLabel.text?.removeAll()
         self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
@@ -93,3 +104,5 @@ class MainViewController: UIViewController {
         UIView.transition(with: label, duration: 0.7, options: options, animations: {})
     }
 }
+
+

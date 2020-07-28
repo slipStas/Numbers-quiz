@@ -50,6 +50,9 @@
                                                 <rect key="frame" x="308.5" y="0.0" width="99.5" height="100"/>
                                                 <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="⇤"/>
+                                                <connections>
+                                                    <action selector="backspaseButton:" destination="BYZ-38-t0r" eventType="touchDown" id="6cD-bR-UYy"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

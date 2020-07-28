@@ -9,7 +9,7 @@
 import UIKit
 
 class NumberButtonModel: UIButton {
-        
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
@@ -51,8 +51,8 @@ class NumberButtonModel: UIButton {
         
         switch titleTextButton {
         case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
-            print(titleTextButton)
             Session.shared.userAnswer += titleTextButton
+            sender.feedback()
         default:
             break
         }
@@ -63,10 +63,17 @@ class NumberButtonModel: UIButton {
     }
     
     @objc func touchUpNumberButton(sender: UIButton) {
-//           guard let titleText = sender.titleLabel?.text else {return}
-           
-           UIView.animate(withDuration: 0.05, animations: {
-               sender.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
-           })
-       }
+        
+        UIView.animate(withDuration: 0.05, animations: {
+            sender.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
+        })
+    }
+}
+
+extension UIButton {
+    func feedback() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.prepare()
+        generator.impactOccurred()
+    }
 }
