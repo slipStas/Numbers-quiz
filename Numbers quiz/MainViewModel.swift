@@ -23,33 +23,37 @@ protocol MainViewModelOutput {
     var mathProblem: ((String) -> Void)? {get set}
     var startStopStatus: ((StartStopStatus) -> Void)? {get set}
     var correctAnswerStatus: ((Bool) -> Void)? {get set}
-    var countTrueAndFalseAnswers: ((Int, Int) -> Void) {get set}
+    var trueAnswers: ((Int) -> Void) {get set}
+    var falseAnswers: ((Int) -> Void) {get set}
+
 }
 
 class MainViewModel: MainViewModelInput, MainViewModelOutput {
-    
-    var countTrueAndFalseAnswers: ((Int, Int) -> Void)
+    var trueAnswers: ((Int) -> Void)
+    var falseAnswers: ((Int) -> Void)
     var correctAnswerStatus: ((Bool) -> Void)?
     var startStopStatus: ((StartStopStatus) -> Void)?
     var mathProblem: ((String) -> Void)?
     
-    init(status: StartStopStatus, startStopStatus: @escaping (StartStopStatus) -> Void, countTrueAndFalseAnswers: @escaping ((Int, Int) -> Void)) {
+    init(status: StartStopStatus, startStopStatus: @escaping (StartStopStatus) -> Void, trueAnswers: @escaping ((Int) -> Void), falseAnswers: @escaping ((Int) -> Void)) {
         self.statusStartStop = status
         self.startStopStatus = startStopStatus
-        self.countTrueAndFalseAnswers = countTrueAndFalseAnswers
+        self.trueAnswers = trueAnswers
+        self.falseAnswers = falseAnswers
         startStopStatus(status)
-        countTrueAndFalseAnswers(countTrueAnswers, countFalseAnswers)
+        trueAnswers(countTrueAnswers)
+        falseAnswers(countFalseAnswers)
     }
     
     var math = MathProblemModel()
     var countTrueAnswers = 0 {
         didSet {
-            countTrueAndFalseAnswers(countTrueAnswers, countFalseAnswers)
+            trueAnswers(countTrueAnswers)
         }
     }
     var countFalseAnswers = 0 {
         didSet {
-            countTrueAndFalseAnswers(countTrueAnswers, countFalseAnswers)
+            falseAnswers(countFalseAnswers)
         }
     }
     
