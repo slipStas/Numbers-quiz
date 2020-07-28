@@ -15,6 +15,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     
+    @IBOutlet weak var countTrueAnswersLabel: UILabel!
+    @IBOutlet weak var countFalseAnswersLabel: UILabel!
+    
+    
     @IBOutlet weak var startStopButton: NumberButtonModel!
     
     override func viewDidLoad() {
@@ -23,6 +27,9 @@ class MainViewController: UIViewController {
         viewModel = MainViewModel(status: .start, startStopStatus: { [weak self] (status) in
             guard let self = self else {return}
             self.startStopButton.setTitle(status.rawValue, for: .normal)
+            }, countTrueAndFalseAnswers: { [weak self] (countTrueAnswers, countFalseAnswers) in
+                self?.countTrueAnswersLabel.text = String(countTrueAnswers)
+                self?.countFalseAnswersLabel.text = String(countFalseAnswers)
         })
         
         prepareLabels()
@@ -37,7 +44,7 @@ class MainViewController: UIViewController {
     
     @IBAction func startStop(_ sender: Any) {
         
-        switch viewModel?.status {
+        switch viewModel?.statusStartStop {
         case .start:
             viewModel?.start()
         case .stop:
@@ -51,8 +58,10 @@ class MainViewController: UIViewController {
         }
         
     }
+    
     @IBAction func check(_ sender: Any) {
         viewModel?.check()
+        self.answerLabel.text?.removeAll()
     }
     
     @IBAction func pressedButton(_ sender: UIButton) {
@@ -66,8 +75,4 @@ class MainViewController: UIViewController {
         self.taskLabel.text = "For start press <Start> button"
         self.answerLabel.text?.removeAll()
     }
-    
-    
-    
-
 }

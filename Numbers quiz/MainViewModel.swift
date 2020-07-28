@@ -22,24 +22,40 @@ protocol MainViewModelInput {
 protocol MainViewModelOutput {
     var mathProblem: ((String) -> Void)? {get set}
     var startStopStatus: ((StartStopStatus) -> Void)? {get set}
+    var correctAnswerStatus: ((Bool) -> Void)? {get set}
+    var countTrueAndFalseAnswers: ((Int, Int) -> Void) {get set}
 }
 
 class MainViewModel: MainViewModelInput, MainViewModelOutput {
+    
+    var countTrueAndFalseAnswers: ((Int, Int) -> Void)
+    var correctAnswerStatus: ((Bool) -> Void)?
     var startStopStatus: ((StartStopStatus) -> Void)?
     var mathProblem: ((String) -> Void)?
     
-    init(status: StartStopStatus, startStopStatus: @escaping (StartStopStatus) -> Void) {
-        self.status = status
+    init(status: StartStopStatus, startStopStatus: @escaping (StartStopStatus) -> Void, countTrueAndFalseAnswers: @escaping ((Int, Int) -> Void)) {
+        self.statusStartStop = status
         self.startStopStatus = startStopStatus
+        self.countTrueAndFalseAnswers = countTrueAndFalseAnswers
         startStopStatus(status)
+        countTrueAndFalseAnswers(countTrueAnswers, countFalseAnswers)
     }
     
     var math = MathProblemModel()
-    
-    var status: StartStopStatus {
+    var countTrueAnswers = 0 {
         didSet {
-            print(status.rawValue)
-            startStopStatus?(status)
+            countTrueAndFalseAnswers(countTrueAnswers, countFalseAnswers)
+        }
+    }
+    var countFalseAnswers = 0 {
+        didSet {
+            countTrueAndFalseAnswers(countTrueAnswers, countFalseAnswers)
+        }
+    }
+    
+    var statusStartStop: StartStopStatus {
+        didSet {
+            startStopStatus?(statusStartStop)
         }
     }
     var readyMathProblem = "" {
@@ -47,24 +63,41 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             mathProblem?(readyMathProblem)
         }
     }
+    var answerStatus = false {
+        didSet {
+            correctAnswerStatus?(answerStatus)
+            switch answerStatus {
+            case true:
+                countTrueAnswers += 1
+            case false:
+                countFalseAnswers += 1
+            }
+        }
+    }
     
     func start() {
         math.generateFullMathProblem()
         readyMathProblem = math.fullMathProblem ?? "error"
-        status = .stop
+        statusStartStop = .stop
     }
     
     func check() {
-        print("check")
         
         if Session.shared.userAnswer == math.stringResult {
             print("bingo!")
+            Session.shared.userAnswer.removeAll()
+            answerStatus = true
+            start()
+        } else {
+            answerStatus = false
+            stop()
         }
     }
     
     func stop() {
         readyMathProblem = "stopped" 
-        status = .start
+        statusStartStop = .start
+        Session.shared.userAnswer.removeAll()
     }
     
 }

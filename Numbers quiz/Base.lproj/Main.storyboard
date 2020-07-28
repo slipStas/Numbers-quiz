@@ -174,6 +174,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-qg-RVS">
+                                <rect key="frame" x="8" y="393" width="50.5" height="101"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r5-wb-9VA">
+                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="50.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNF-dF-LFI">
+                                        <rect key="frame" x="0.0" y="50.5" width="50.5" height="50.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M1e-qg-RVS" secondAttribute="height" multiplier="1:2" id="dGd-ir-3qt"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -183,16 +203,21 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wFc-c6-qYr" secondAttribute="trailing" constant="3" id="Prl-tz-LgF"/>
                             <constraint firstItem="6KD-pM-Ztx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="QQY-Gb-0f9"/>
                             <constraint firstItem="6KD-pM-Ztx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="SKs-ob-DEV"/>
+                            <constraint firstItem="M1e-qg-RVS" firstAttribute="width" secondItem="vxB-0h-I9O" secondAttribute="width" multiplier="0.25" id="X2U-fw-rXG"/>
+                            <constraint firstItem="wFc-c6-qYr" firstAttribute="top" secondItem="M1e-qg-RVS" secondAttribute="bottom" constant="8" id="Yq3-KD-6dk"/>
                             <constraint firstItem="2FH-MY-aY4" firstAttribute="top" secondItem="wFc-c6-qYr" secondAttribute="bottom" constant="3" id="aLQ-hf-F8w"/>
                             <constraint firstItem="76V-EV-SWH" firstAttribute="leading" secondItem="6KD-pM-Ztx" secondAttribute="trailing" constant="10" id="sDU-2F-Vuc"/>
                             <constraint firstItem="2FH-MY-aY4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="3" id="wgK-tF-ZYf"/>
                             <constraint firstItem="wFc-c6-qYr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="3" id="xKK-i9-sCi"/>
+                            <constraint firstItem="M1e-qg-RVS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="xhV-vv-2Kc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2FH-MY-aY4" secondAttribute="trailing" constant="3" id="zCD-D0-OH3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="76V-EV-SWH" id="YUT-pN-uOy"/>
+                        <outlet property="countFalseAnswersLabel" destination="zNF-dF-LFI" id="G46-vc-Bav"/>
+                        <outlet property="countTrueAnswersLabel" destination="9r5-wb-9VA" id="JxO-75-qqB"/>
                         <outlet property="startStopButton" destination="vxB-0h-I9O" id="Brp-Gs-eWO"/>
                         <outlet property="taskLabel" destination="6KD-pM-Ztx" id="Cbp-Yo-Ltk"/>
                     </connections>
