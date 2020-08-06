@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
                 self?.countFalseAnswersLabel.text = String(falseAnswers)
         })
         
+        viewModel?.gameDelegate = self
         prepareLabels()
         
         viewModel?.mathProblem = { [weak self] string in
@@ -105,4 +106,11 @@ class MainViewController: UIViewController {
     }
 }
 
-
+extension MainViewController: MainSceneDelegate {
+    func didEndGame(result: Int, averageTime: String) {
+        self.dismiss(animated: true, completion: nil)
+        print("game over")
+        print("your result:")
+        print("true answers count - \(result), average time - \(averageTime)")
+    }
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CRl-7T-Yyt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,10 +7,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="pmx-JH-dmJ">
+            <objects>
+                <viewController id="CRl-7T-Yyt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vrm-js-XQM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="7V5-s0-aEO">
+                                <rect key="frame" x="50" y="162.5" width="314" height="571"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwx-Wq-JIc">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
+                                        <state key="normal" title="Start game"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="NBg-DF-qtC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLk-ZG-D3O">
+                                        <rect key="frame" x="0.0" y="541" width="314" height="30"/>
+                                        <state key="normal" title="Results board"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7V5-s0-aEO" secondAttribute="height" multiplier="11:20" id="QD2-TH-0ek"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7V5-s0-aEO" firstAttribute="leading" secondItem="HU8-b8-zWJ" secondAttribute="leading" constant="50" id="0XU-0m-T77"/>
+                            <constraint firstItem="7V5-s0-aEO" firstAttribute="centerX" secondItem="vrm-js-XQM" secondAttribute="centerX" id="SKR-4d-VMT"/>
+                            <constraint firstItem="7V5-s0-aEO" firstAttribute="centerY" secondItem="vrm-js-XQM" secondAttribute="centerY" id="ZLy-fG-FA9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HU8-b8-zWJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zU0-eu-CbR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1157" y="-24"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Numbers_quiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="MainViewController" customModule="Numbers_quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,6 +258,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="WoI-17-Eif"/>
                     <connections>
                         <outlet property="answerLabel" destination="76V-EV-SWH" id="YUT-pN-uOy"/>
                         <outlet property="countFalseAnswersLabel" destination="zNF-dF-LFI" id="G46-vc-Bav"/>

@@ -29,6 +29,9 @@ protocol MainViewModelOutput {
 }
 
 class MainViewModel: MainViewModelInput, MainViewModelOutput {
+    
+    public weak var gameDelegate: MainSceneDelegate?
+    
     var trueAnswers: ((Int) -> Void)
     var falseAnswers: ((Int) -> Void)
     var correctAnswerStatus: ((Bool) -> Void)?
@@ -56,7 +59,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             falseAnswers(countFalseAnswers)
         }
     }
-    
     var statusStartStop: StartStopStatus {
         didSet {
             startStopStatus?(statusStartStop)
@@ -102,6 +104,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         readyMathProblem = "stopped" 
         statusStartStop = .start
         Session.shared.userAnswer.removeAll()
+        self.gameDelegate?.didEndGame(result: countTrueAnswers, averageTime: "0:00:00")
     }
-    
 }
