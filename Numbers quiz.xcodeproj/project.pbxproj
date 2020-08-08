@@ -11,6 +11,8 @@
 		8E06161524CF61E400A0FEF4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06161424CF61E400A0FEF4 /* Session.swift */; };
 		8E3AEA7824DB885D00C96001 /* MainSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */; };
 		8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */; };
+		8E69F70A24DE327200FA3B46 /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */; };
+		8EE703EB24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE703EA24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift */; };
 		8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */; };
 		8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */; };
 		8EFB41D924CD9F580085BDA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41D724CD9F580085BDA5 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		8E06161424CF61E400A0FEF4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDelegate.swift; sourceTree = "<group>"; };
 		8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
+		8EE703EA24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewCell.swift; sourceTree = "<group>"; };
 		8EFB41CE24CD9F580085BDA5 /* Numbers quiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Numbers quiz.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8EE703E824DE2BF3007876B6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */,
+				8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8EE703E924DE2CA6007876B6 /* Table cells */ = {
+			isa = PBXGroup;
+			children = (
+				8EE703EA24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift */,
+			);
+			path = "Table cells";
+			sourceTree = "<group>";
+		};
 		8EFB41C524CD9F580085BDA5 = {
 			isa = PBXGroup;
 			children = (
@@ -68,11 +89,12 @@
 		8EFB41D024CD9F580085BDA5 /* Numbers quiz */ = {
 			isa = PBXGroup;
 			children = (
+				8EE703E924DE2CA6007876B6 /* Table cells */,
+				8EE703E824DE2BF3007876B6 /* Controllers */,
 				8EFB41EC24CDAA3D0085BDA5 /* Models */,
 				8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */,
 				8EFB41D724CD9F580085BDA5 /* Main.storyboard */,
 				8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */,
-				8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */,
 				8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */,
 				8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */,
 				8EFB41DD24CD9F5C0085BDA5 /* Assets.xcassets */,
@@ -171,7 +193,9 @@
 				8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */,
 				8E06161524CF61E400A0FEF4 /* Session.swift in Sources */,
 				8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */,
+				8E69F70A24DE327200FA3B46 /* LeaderBoardViewController.swift in Sources */,
 				8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */,
+				8EE703EB24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift in Sources */,
 				8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

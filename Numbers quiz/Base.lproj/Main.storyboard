@@ -27,7 +27,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLk-ZG-D3O">
                                         <rect key="frame" x="0.0" y="541" width="314" height="30"/>
-                                        <state key="normal" title="Results board"/>
+                                        <state key="normal" title="Leaderboard"/>
+                                        <connections>
+                                            <segue destination="t4Y-jn-PWt" kind="show" id="bsu-3I-sv0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -270,6 +273,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-403" y="-24"/>
+        </scene>
+        <!--Leader Board View Controller-->
+        <scene sceneID="Dxf-r7-KsM">
+            <objects>
+                <viewController id="t4Y-jn-PWt" customClass="LeaderBoardViewController" customModule="Numbers_quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="La8-ax-lNw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zQ7-3h-fE7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leaderboardCell" rowHeight="94" id="s2W-4k-1BA" customClass="LeaderBoardTableViewCell" customModule="Numbers_quiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="94"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s2W-4k-1BA" id="y7q-GJ-Ah0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp7-Qq-HKY">
+                                                    <rect key="frame" x="8" y="8" width="398" height="78"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Sp7-Qq-HKY" secondAttribute="trailing" constant="8" id="0RC-X1-JVo"/>
+                                                <constraint firstItem="Sp7-Qq-HKY" firstAttribute="leading" secondItem="y7q-GJ-Ah0" secondAttribute="leading" constant="8" id="2Xm-Oo-kA4"/>
+                                                <constraint firstAttribute="bottom" secondItem="Sp7-Qq-HKY" secondAttribute="bottom" constant="8" id="FBi-rT-vIX"/>
+                                                <constraint firstItem="Sp7-Qq-HKY" firstAttribute="top" secondItem="y7q-GJ-Ah0" secondAttribute="top" constant="8" id="GyA-Wb-gX5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="leaderBoardLabel" destination="Sp7-Qq-HKY" id="PQG-zb-n2x"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EdX-aI-ooD" firstAttribute="bottom" secondItem="zQ7-3h-fE7" secondAttribute="bottom" id="2Ab-8r-Pus"/>
+                            <constraint firstItem="EdX-aI-ooD" firstAttribute="trailing" secondItem="zQ7-3h-fE7" secondAttribute="trailing" id="9gd-CN-Opw"/>
+                            <constraint firstItem="zQ7-3h-fE7" firstAttribute="top" secondItem="EdX-aI-ooD" secondAttribute="top" id="cPD-4w-3Rr"/>
+                            <constraint firstItem="zQ7-3h-fE7" firstAttribute="leading" secondItem="EdX-aI-ooD" secondAttribute="leading" id="hLL-Tm-Fhe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EdX-aI-ooD"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2a2-Rn-g3q"/>
+                    <connections>
+                        <outlet property="leaderBoardTableView" destination="zQ7-3h-fE7" id="EzX-2j-4gi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IuG-Rk-5fO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-404.34782608695656" y="713.83928571428567"/>
         </scene>
     </scenes>
 </document>
