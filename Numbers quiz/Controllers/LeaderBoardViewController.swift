@@ -29,7 +29,8 @@ extension LeaderBoardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderBoardTableView.dequeueReusableCell(withIdentifier: "leaderboardCell", for: indexPath) as! LeaderBoardTableViewCell
         
-        cell.leaderBoardLabel.text = "number " + String(indexPath.row)
+        cell.resultLabel.text = "number " + String(indexPath.row)
+        cell.dateLabel.text = "date of the game"
         
         return cell
     }

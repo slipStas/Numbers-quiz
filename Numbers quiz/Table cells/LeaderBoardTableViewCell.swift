@@ -10,7 +10,8 @@ import UIKit
 
 class LeaderBoardTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var leaderBoardLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
