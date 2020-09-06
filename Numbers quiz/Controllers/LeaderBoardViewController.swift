@@ -10,12 +10,21 @@ import UIKit
 
 class LeaderBoardViewController: UIViewController {
 
-    @IBOutlet weak var leaderBoardTableView: UITableView!
+    @IBOutlet weak var leaderBoardTableView: UITableView! {
+        didSet {
+            self.leaderBoardTableView.dataSource = self
+        }
+    }
+    
+    private var records: [GameResultModel]  = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.leaderBoardTableView.dataSource = self
+        
+        guard let results = try? GameRecordsCaretaker.shared.loadResult()  else {return}
+        self.records = results
+        
+        self.leaderBoardTableView.reloadData()
     }
     
 }
@@ -23,14 +32,14 @@ class LeaderBoardViewController: UIViewController {
 extension LeaderBoardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        records.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderBoardTableView.dequeueReusableCell(withIdentifier: "leaderboardCell", for: indexPath) as! LeaderBoardTableViewCell
         
-        cell.resultLabel.text = "number " + String(indexPath.row)
-        cell.dateLabel.text = "date of the game"
+        cell.resultLabel.text = String(records[indexPath.row].value ?? 0) //"number " + String(indexPath.row)
+        cell.dateLabel.text = String(records[indexPath.row].date?.description ?? "no date") //"date of the game"
         
         return cell
     }

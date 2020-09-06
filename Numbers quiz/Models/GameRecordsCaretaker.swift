@@ -10,11 +10,17 @@ import Foundation
 
 class GameRecordsCaretaker {
     
+    static let shared = GameRecordsCaretaker()
+    
     func saveResult(result: GameResultModel) {
         
     }
     
-    func loadResult() {
+    func loadResult() -> [GameResultModel] {
         
+        let result = GameResultModel(value: 11, date: Date())
+        var resultsArray: [GameResultModel] = []
+        resultsArray.append(result)
+        return resultsArray
     }
 }
