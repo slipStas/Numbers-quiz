@@ -9,5 +9,5 @@
 import Foundation
 
 protocol MainSceneDelegate : AnyObject {
-    func didEndGame(result: Int, averageTime: String)
+    func didEndGame(result: Int, averageTime: String) throws
 }

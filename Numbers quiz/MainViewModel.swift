@@ -93,6 +93,11 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             print("bingo!")
             Session.shared.userAnswer.removeAll()
             answerStatus = true
+//            var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
+//            let newRecord = GameResultModel(value: countTrueAnswers, date: Date())
+//            records.append(newRecord)
+//            try? GameRecordsCaretaker.shared.saveResult(result: records)
+//            
             start()
         } else {
             answerStatus = false
@@ -104,6 +109,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         readyMathProblem = "stopped" 
         statusStartStop = .start
         Session.shared.userAnswer.removeAll()
-        self.gameDelegate?.didEndGame(result: countTrueAnswers, averageTime: "0:00:00")
+        try? self.gameDelegate?.didEndGame(result: countTrueAnswers, averageTime: "0:00:00")
     }
 }

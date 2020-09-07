@@ -11,16 +11,24 @@ import Foundation
 class GameRecordsCaretaker {
     
     static let shared = GameRecordsCaretaker()
+    private let fileName = "records.data"
     
-    func saveResult(result: GameResultModel) {
+    var filePath: URL? {
+        guard let filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {return nil}
         
+        return filePath.appendingPathComponent(fileName, isDirectory: false)
     }
     
-    func loadResult() -> [GameResultModel] {
+    func saveResult(result: [GameResultModel]) throws{
         
-        let result = GameResultModel(value: 11, date: Date())
-        var resultsArray: [GameResultModel] = []
-        resultsArray.append(result)
-        return resultsArray
+        let data = try JSONEncoder().encode(result)
+        try data.write(to: filePath!)
+    }
+    
+    func loadResult() throws -> [GameResultModel] {
+        
+        let data = try Data(contentsOf: filePath!)
+        
+        return try JSONDecoder().decode([GameResultModel].self, from: data)
     }
 }

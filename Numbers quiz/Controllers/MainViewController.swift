@@ -107,7 +107,13 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MainSceneDelegate {
-    func didEndGame(result: Int, averageTime: String) {
+    
+    func didEndGame(result: Int, averageTime: String) throws {
+        var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
+        let newRecord = GameResultModel(value: result, date: Date())
+        records.append(newRecord)
+        try? GameRecordsCaretaker.shared.saveResult(result: records)
+        
         self.dismiss(animated: true, completion: nil)
         print("game over")
         print("your result:")

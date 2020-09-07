@@ -38,8 +38,10 @@ extension LeaderBoardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leaderBoardTableView.dequeueReusableCell(withIdentifier: "leaderboardCell", for: indexPath) as! LeaderBoardTableViewCell
         
-        cell.resultLabel.text = String(records[indexPath.row].value ?? 0) //"number " + String(indexPath.row)
-        cell.dateLabel.text = String(records[indexPath.row].date?.description ?? "no date") //"date of the game"
+        let record = records[indexPath.row]
+        
+        cell.resultLabel.text = String(record.value ?? 0) //"number " + String(indexPath.row)
+        cell.dateLabel.text = String(record.date?.description ?? "no date") //"date of the game"
         
         return cell
     }
