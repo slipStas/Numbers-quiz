@@ -43,11 +43,11 @@ extension LeaderBoardViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = "HH:mm:ss  EEE, d MMM yyyy"
+        //dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "HH:mm  EEE, d MMMM"
         
-        cell.resultLabel.text = String(record.value ?? 0)
-        cell.dateLabel.text = dateFormatter.string(from: record.date ?? Date()) 
+        cell.resultLabel.text = "Score: \(String(record.value ?? 0))"
+        cell.dateLabel.text = dateFormatter.string(from: record.date ?? Date())
         
         return cell
     }
