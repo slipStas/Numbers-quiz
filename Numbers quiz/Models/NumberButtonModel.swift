@@ -29,15 +29,15 @@ class NumberButtonModel: UIButton {
     func styleButton() {
         shadow()
         setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        backgroundColor = .myOrange
         titleLabel?.font = UIFont.systemFont(ofSize: 40)
         layer.cornerRadius = layer.frame.height / 8
         layer.borderWidth = 2
-        layer.borderColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        layer.borderColor = UIColor.myOrangeBorder.cgColor
     }
     
     private func shadow() {
-        layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        layer.shadowColor = UIColor.myShadowGray.cgColor
         layer.shadowOffset = CGSize(width: -3, height: -3)
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.5
