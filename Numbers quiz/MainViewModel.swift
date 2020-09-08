@@ -82,6 +82,20 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     }
     
     func start() {
+        
+        switch math.difficulty {
+        case 0:
+            math.mathCreationStrategy = EasyMathCreationStrategy()
+        case 1:
+            math.mathCreationStrategy = NormalMathCreationStrategy()
+        case 2:
+            math.mathCreationStrategy = HardMathCreationStrategy()
+        case 3:
+            math.mathCreationStrategy = ExpertMathCreationStrategy()
+        default:
+            break
+        }
+        
         math.generateFullMathProblem()
         readyMathProblem = math.fullMathProblem ?? "error"
         statusStartStop = .stop
@@ -93,11 +107,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             print("bingo!")
             Session.shared.userAnswer.removeAll()
             answerStatus = true
-//            var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
-//            let newRecord = GameResultModel(value: countTrueAnswers, date: Date())
-//            records.append(newRecord)
-//            try? GameRecordsCaretaker.shared.saveResult(result: records)
-//            
             start()
         } else {
             answerStatus = false

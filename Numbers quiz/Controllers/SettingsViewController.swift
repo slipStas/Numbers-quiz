@@ -15,8 +15,6 @@ class SettingsViewController: UIViewController {
     let difficultyLabel = UILabel()
     let segmentedControl = UISegmentedControl()
     
-    let defaults = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,20 +22,20 @@ class SettingsViewController: UIViewController {
         
         addViews()
         
-        segmentedControl.selectedSegmentIndex = defaults.integer(forKey: "difficulty")
+        segmentedControl.selectedSegmentIndex = Session.shared.defaults.integer(forKey: "difficulty")
         segmentedControl.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
     }
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            defaults.setValue(0, forKey: "difficulty")
+            Session.shared.defaults.setValue(0, forKey: "difficulty")
         case 1:
-            defaults.setValue(1, forKey: "difficulty")
+            Session.shared.defaults.setValue(1, forKey: "difficulty")
         case 2:
-            defaults.setValue(2, forKey: "difficulty")
+            Session.shared.defaults.setValue(2, forKey: "difficulty")
         case 3:
-            defaults.setValue(3, forKey: "difficulty")
+            Session.shared.defaults.setValue(3, forKey: "difficulty")
         default:
             break
         }

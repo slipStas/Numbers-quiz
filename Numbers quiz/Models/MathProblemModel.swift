@@ -21,6 +21,9 @@ class MathNumbers {
 
 class MathProblemModel {
     
+    var mathCreationStrategy : MathCreationStrategy?
+    var difficulty = Session.shared.defaults.integer(forKey: "difficulty")
+    
     var numbers = MathNumbers()
     var operation: Operation?
     var result: Int = 0 {
@@ -33,45 +36,23 @@ class MathProblemModel {
     
     private func whatTheOperation() {
         
-        var rand = 0
-        rand = Int.random(in: 0...3)
-        
-        switch rand {
-        case 0:
-            operation = Operation.subt
-        case 1:
-            operation = Operation.add
-        case 2:
-            operation = Operation.mult
-        case 3:
-            operation = Operation.div
-        default:
-            break
-        }
-    }
-    
-    private func noZero(number : Int) -> Int {
-        
-        if number == 0 {
-            return 1
-        } else {
-            return number
-        }
+        operation = mathCreationStrategy?.whatTheOperation()
     }
     
     private func generateFirstSecondNumbersNoDiv() {
         
-        numbers.leftNumber = Int.random(in: 0...110)
-        numbers.rightNumber = Int.random(in: 0...110)
+        guard let generateNumbersNoDiv = mathCreationStrategy?.generateFirstSecondNumbersNoDiv() else {return}
+        numbers = generateNumbersNoDiv
     }
     private func generateFirstSecondNumbersForDiv() {
-        numbers.leftNumber = noZero(number: (Int.random(in: 0...10)))
-        numbers.rightNumber = numbers.leftNumber * noZero(number: (Int.random(in: 0...10)))
+        
+        guard let generateNumbersNoDiv = mathCreationStrategy?.generateFirstSecondNumbersForDiv() else {return}
+        numbers = generateNumbersNoDiv
     }
     private func generateFirstSecondNumbersForMult() {
         
-        numbers.leftNumber = noZero(number: Int.random(in: 0...10))
-        numbers.rightNumber = noZero(number: Int.random(in: 0...10))
+        guard let generateNumbersNoDiv = mathCreationStrategy?.generateFirstSecondNumbersForMult() else {return}
+        numbers = generateNumbersNoDiv
     }
     private func generateRandomNumbers() {
         switch operation {
