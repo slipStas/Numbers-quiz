@@ -9,6 +9,7 @@
 import Foundation
 
 struct GameResultModel: Codable {
-    var value: Int?
+    var trueAnswers: Int?
+    var falseAnswers: Int?
     var date: Date?
 }

@@ -26,7 +26,6 @@ class LeaderBoardViewController: UIViewController {
         
         self.leaderBoardTableView.reloadData()
     }
-    
 }
 
 extension LeaderBoardViewController: UITableViewDataSource {
@@ -47,7 +46,10 @@ extension LeaderBoardViewController: UITableViewDataSource {
         //dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "HH:mm  EEE, d MMMM"
         
-        cell.resultLabel.text = "Score: \(String(record.value ?? 0))"
+        cell.Score.text = "Score: "
+        cell.trueCount.text = String(record.trueAnswers ?? 0)
+        cell.slash.text = " / "
+        cell.falseCount.text = String(record.falseAnswers ?? 0)
         cell.dateLabel.text = dateFormatter.string(from: record.date ?? Date())
         
         return cell

@@ -12,13 +12,25 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewModel?
     
+    var isNumberButtonsEnable : Bool? {
+        didSet {
+            disableEnableButtons(sender: numberButtons, isEnable: isNumberButtonsEnable ?? false)
+        }
+    }
+    var enableDisableButtonsNumbersView = UIView()
+    
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     
     @IBOutlet weak var countTrueAnswersLabel: UILabel!
     @IBOutlet weak var countFalseAnswersLabel: UILabel!
     
+    @IBOutlet weak var numberButtons: UIStackView!
     @IBOutlet weak var startStopButton: NumberButtonModel!
+    
+    @IBOutlet weak var finishButton: NumberButtonModel!
+    
+    @IBOutlet weak var checkButton: NumberButtonModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +49,7 @@ class MainViewController: UIViewController {
         })
         
         viewModel?.gameDelegate = self
+        isNumberButtonsEnable = false
         prepareLabels()
         
         viewModel?.mathProblem = { [weak self] string in
@@ -57,6 +70,15 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func startStop(_ sender: UIButton) {
+        
+        switch sender.titleLabel?.text {
+        case "Start":
+            isNumberButtonsEnable = true
+        case "Stop":
+            isNumberButtonsEnable = false
+        default:
+            break
+        }
         
         sender.feedback()
         switch viewModel?.statusStartStop {
@@ -105,22 +127,38 @@ class MainViewController: UIViewController {
         self.countFalseAnswersLabel.font = UIFont.systemFont(ofSize: 35)
     }
     
+    func disableEnableButtons(sender: UIView, isEnable: Bool?) {
+        
+        sender.addSubview(self.enableDisableButtonsNumbersView)
+        guard let isEnable = isEnable else {return}
+        switch isEnable {
+        case true:
+            self.enableDisableButtonsNumbersView.frame = .zero
+            finishButton.isEnabled = true
+            checkButton.isEnabled = true
+        case false:
+            self.enableDisableButtonsNumbersView.frame = sender.bounds
+            finishButton.isEnabled = false
+            checkButton.isEnabled = false
+        }
+    }
+    
     func animateAnswerCounter(label: UILabel, options: UIView.AnimationOptions) {
-        UIView.transition(with: label, duration: 0.3, options: options, animations: {})
+        UIView.transition(with: label, duration: 0.2, options: options, animations: {})
     }
 }
 
 extension MainViewController: MainSceneDelegate {
     
-    func didEndGame(result: Int, averageTime: String) throws {
+    func didEndGame(trueAnswerCount: Int, falseAnswerCount: Int, averageTime: String) throws {
         var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
-        let newRecord = GameResultModel(value: result, date: Date())
+        let newRecord = GameResultModel(trueAnswers: trueAnswerCount, falseAnswers: falseAnswerCount, date: Date())
         records.append(newRecord)
         try? GameRecordsCaretaker.shared.saveResult(result: records)
         
         self.dismiss(animated: true, completion: nil)
         print("game over")
         print("your result:")
-        print("true answers count - \(result), average time - \(averageTime)")
+        print("true answers count - \(trueAnswerCount), false answer count - \(falseAnswerCount), average time - \(averageTime)")
     }
 }

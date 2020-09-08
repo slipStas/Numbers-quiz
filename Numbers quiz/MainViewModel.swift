@@ -122,6 +122,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     }
     
     func finish() {
-        try? self.gameDelegate?.didEndGame(result: countTrueAnswers, averageTime: "0:00:00")
+        try? self.gameDelegate?.didEndGame(trueAnswerCount: countTrueAnswers, falseAnswerCount: countFalseAnswers, averageTime: "0:00:00")
     }
 }
