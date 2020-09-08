@@ -126,12 +126,12 @@
 			children = (
 				8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */,
 				8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */,
+				8E655D732507850100FFF439 /* MathCreationStrategy.swift */,
 				8E06161424CF61E400A0FEF4 /* Session.swift */,
 				8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */,
 				8E69F70D24DE417C00FA3B46 /* GameRecordsCaretaker.swift */,
 				8E655D6D25068A9F00FFF439 /* ColorsModel.swift */,
 				8E655D7125077ECA00FFF439 /* Difficulty.swift */,
-				8E655D732507850100FFF439 /* MathCreationStrategy.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

@@ -14,11 +14,14 @@ enum Operation: String {
     case mult = "*"
     case div = "/"
 }
+class MathNumbers {
+    var leftNumber: Int = 0
+    var rightNumber: Int = 0
+}
 
 class MathProblemModel {
     
-    var leftNumber: Int = 0
-    var rightNumber: Int = 0
+    var numbers = MathNumbers()
     var operation: Operation?
     var result: Int = 0 {
         didSet {
@@ -58,40 +61,40 @@ class MathProblemModel {
     
     private func generateFirstSecondNumbersNoDiv() {
         
-        leftNumber = Int.random(in: 0...110)
-        rightNumber = Int.random(in: 0...110)
+        numbers.leftNumber = Int.random(in: 0...110)
+        numbers.rightNumber = Int.random(in: 0...110)
     }
     private func generateFirstSecondNumbersForDiv() {
-        leftNumber = noZero(number: (Int.random(in: 0...10)))
-        rightNumber = leftNumber * noZero(number: (Int.random(in: 0...10)))
+        numbers.leftNumber = noZero(number: (Int.random(in: 0...10)))
+        numbers.rightNumber = numbers.leftNumber * noZero(number: (Int.random(in: 0...10)))
     }
     private func generateFirstSecondNumbersForMult() {
         
-        leftNumber = noZero(number: Int.random(in: 0...10))
-        rightNumber = noZero(number: Int.random(in: 0...10))
+        numbers.leftNumber = noZero(number: Int.random(in: 0...10))
+        numbers.rightNumber = noZero(number: Int.random(in: 0...10))
     }
     private func generateRandomNumbers() {
         switch operation {
         case .subt:
             generateFirstSecondNumbersNoDiv()
             
-            if leftNumber >= rightNumber {
-                result = leftNumber - rightNumber
+            if numbers.leftNumber >= numbers.rightNumber {
+                result = numbers.leftNumber - numbers.rightNumber
             } else {
-                result = rightNumber - leftNumber
+                result = numbers.rightNumber - numbers.leftNumber
             }
         case .add:
             generateFirstSecondNumbersNoDiv()
             
-            result = leftNumber + rightNumber
+            result = numbers.leftNumber + numbers.rightNumber
         case .mult:
             generateFirstSecondNumbersForMult()
             
-            result = leftNumber * rightNumber
+            result = numbers.leftNumber * numbers.rightNumber
         case .div:
             generateFirstSecondNumbersForDiv()
             
-            result = rightNumber / leftNumber
+            result = numbers.rightNumber / numbers.leftNumber
         default:
             break
         }
@@ -101,10 +104,10 @@ class MathProblemModel {
         
         guard let operation = self.operation else {return}
         
-        if operation == Operation.subt && leftNumber < rightNumber || operation == Operation.div {
-            fullMathProblem = String(rightNumber) + operation.rawValue + String(leftNumber) + "  ="
+        if operation == Operation.subt && numbers.leftNumber < numbers.rightNumber || operation == Operation.div {
+            fullMathProblem = String(numbers.rightNumber) + operation.rawValue + String(numbers.leftNumber) + "  ="
         } else {
-            fullMathProblem = String(leftNumber) + operation.rawValue + String(rightNumber) + "  ="
+            fullMathProblem = String(numbers.leftNumber) + operation.rawValue + String(numbers.rightNumber) + "  ="
         }
     }
     
