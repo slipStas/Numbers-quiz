@@ -27,9 +27,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var numberButtons: UIStackView!
     @IBOutlet weak var startStopButton: NumberButtonModel!
-    
-    @IBOutlet weak var finishButton: NumberButtonModel!
-    
+        
     @IBOutlet weak var checkButton: NumberButtonModel!
     
     override func viewDidLoad() {
@@ -134,11 +132,9 @@ class MainViewController: UIViewController {
         switch isEnable {
         case true:
             self.enableDisableButtonsNumbersView.frame = .zero
-            finishButton.isEnabled = true
             checkButton.isEnabled = true
         case false:
             self.enableDisableButtonsNumbersView.frame = sender.bounds
-            finishButton.isEnabled = false
             checkButton.isEnabled = false
         }
     }
