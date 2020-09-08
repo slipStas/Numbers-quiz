@@ -12,9 +12,6 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewModel?
     
-//    var mathCreationStrategy : MathCreationStrategy?
-//    var difficulty = Session.shared.defaults.integer(forKey: "difficulty")
- 
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     
@@ -25,19 +22,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        switch difficulty {
-//        case 0:
-//            mathCreationStrategy = EasyMathCreationStrategy()
-//        case 1:
-//            mathCreationStrategy = NormalMathCreationStrategy()
-//        case 2:
-//            mathCreationStrategy = HardMathCreationStrategy()
-//        case 3:
-//            mathCreationStrategy = ExpertMathCreationStrategy()
-//        default:
-//            break
-//        }
         
         viewModel = MainViewModel(status: .start, startStopStatus: { [weak self] (status) in
             
@@ -104,6 +88,10 @@ class MainViewController: UIViewController {
         
         answerText += sender.titleLabel?.text ?? ""
         self.answerLabel.text = answerText
+    }
+    
+    @IBAction func finishGame(_ sender: Any) {
+        viewModel?.finish()
     }
     
     func prepareLabels() {

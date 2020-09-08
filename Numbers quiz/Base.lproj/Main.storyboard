@@ -189,16 +189,25 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-c6-qYr">
                                 <rect key="frame" x="3" y="502" width="408" height="51"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxB-0h-I9O" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="202.5" height="51"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGA-s6-pkF" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="51"/>
                                         <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="11"/>
+                                        <state key="normal" title="Finish"/>
+                                        <connections>
+                                            <action selector="finishGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NDa-qY-wGC"/>
+                                            <action selector="startStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6H1-h9-W4I"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxB-0h-I9O" userLabel="Start Stop" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
+                                        <rect key="frame" x="137" y="0.0" width="134" height="51"/>
+                                        <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Start/Stop"/>
                                         <connections>
                                             <action selector="startStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TM0-4j-fuB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-64-Ugv" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
-                                        <rect key="frame" x="205.5" y="0.0" width="202.5" height="51"/>
+                                        <rect key="frame" x="274" y="0.0" width="134" height="51"/>
                                         <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Check"/>
                                         <connections>
@@ -229,16 +238,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-qg-RVS">
-                                <rect key="frame" x="8" y="393" width="50.5" height="101"/>
+                                <rect key="frame" x="8" y="427" width="33.5" height="67"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r5-wb-9VA">
-                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNF-dF-LFI">
-                                        <rect key="frame" x="0.0" y="50.5" width="50.5" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="33.5" width="33.5" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

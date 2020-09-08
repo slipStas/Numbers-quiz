@@ -17,6 +17,7 @@ protocol MainViewModelInput {
     func start()
     func stop()
     func check()
+    func finish()
 }
 
 protocol MainViewModelOutput {
@@ -118,6 +119,9 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         readyMathProblem = "stopped" 
         statusStartStop = .start
         Session.shared.userAnswer.removeAll()
+    }
+    
+    func finish() {
         try? self.gameDelegate?.didEndGame(result: countTrueAnswers, averageTime: "0:00:00")
     }
 }
