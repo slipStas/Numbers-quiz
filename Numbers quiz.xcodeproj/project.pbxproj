@@ -14,6 +14,8 @@
 		8E655D6A2506759100FFF439 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D692506759100FFF439 /* StartViewController.swift */; };
 		8E655D6C2506760A00FFF439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D6B2506760A00FFF439 /* SettingsViewController.swift */; };
 		8E655D6E25068A9F00FFF439 /* ColorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D6D25068A9F00FFF439 /* ColorsModel.swift */; };
+		8E655D7225077ECA00FFF439 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D7125077ECA00FFF439 /* Difficulty.swift */; };
+		8E655D742507850100FFF439 /* MathCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D732507850100FFF439 /* MathCreationStrategy.swift */; };
 		8E69F70A24DE327200FA3B46 /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */; };
 		8E69F70C24DE3A7F00FA3B46 /* GameResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */; };
 		8E69F70E24DE417C00FA3B46 /* GameRecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70D24DE417C00FA3B46 /* GameRecordsCaretaker.swift */; };
@@ -36,6 +38,8 @@
 		8E655D692506759100FFF439 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		8E655D6B2506760A00FFF439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8E655D6D25068A9F00FFF439 /* ColorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsModel.swift; sourceTree = "<group>"; };
+		8E655D7125077ECA00FFF439 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		8E655D732507850100FFF439 /* MathCreationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathCreationStrategy.swift; sourceTree = "<group>"; };
 		8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultModel.swift; sourceTree = "<group>"; };
 		8E69F70D24DE417C00FA3B46 /* GameRecordsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordsCaretaker.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 				8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */,
 				8E69F70D24DE417C00FA3B46 /* GameRecordsCaretaker.swift */,
 				8E655D6D25068A9F00FFF439 /* ColorsModel.swift */,
+				8E655D7125077ECA00FFF439 /* Difficulty.swift */,
+				8E655D732507850100FFF439 /* MathCreationStrategy.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 				8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */,
 				8E06161324CF5A3900A0FEF4 /* MathProblemModel.swift in Sources */,
 				8EFB41DC24CD9F580085BDA5 /* Numbers_quiz.xcdatamodeld in Sources */,
+				8E655D742507850100FFF439 /* MathCreationStrategy.swift in Sources */,
 				8EFB41D224CD9F580085BDA5 /* AppDelegate.swift in Sources */,
 				8E06161524CF61E400A0FEF4 /* Session.swift in Sources */,
 				8EFB41D424CD9F580085BDA5 /* SceneDelegate.swift in Sources */,
@@ -215,6 +222,7 @@
 				8EE703EB24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift in Sources */,
 				8E69F70E24DE417C00FA3B46 /* GameRecordsCaretaker.swift in Sources */,
 				8E69F70C24DE3A7F00FA3B46 /* GameResultModel.swift in Sources */,
+				8E655D7225077ECA00FFF439 /* Difficulty.swift in Sources */,
 				8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */,
 				8E655D6E25068A9F00FFF439 /* ColorsModel.swift in Sources */,
 			);

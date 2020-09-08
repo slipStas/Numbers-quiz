@@ -10,17 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    private enum Difficulty: String {
-        case easy = "easy"
-        case normal = "normal"
-        case hard = "hard"
-        case expert = "expert"
-    }
-    
     private var difficultyArray: [Difficulty] = []
     
-    let segmentedControl = UISegmentedControl()
     let difficultyLabel = UILabel()
+    let segmentedControl = UISegmentedControl()
     
     let defaults = UserDefaults.standard
     

@@ -95,14 +95,14 @@ class MainViewController: UIViewController {
         self.answerLabel.text?.removeAll()
         self.taskLabel.font = UIFont.systemFont(ofSize: 20)
         self.answerLabel.font = UIFont.systemFont(ofSize: 20)
-        self.countTrueAnswersLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        self.countFalseAnswersLabel.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        self.countTrueAnswersLabel.textColor = .myGreen
+        self.countFalseAnswersLabel.textColor = .myRed
         self.countTrueAnswersLabel.font = UIFont.systemFont(ofSize: 35)
         self.countFalseAnswersLabel.font = UIFont.systemFont(ofSize: 35)
     }
     
     func animateAnswerCounter(label: UILabel, options: UIView.AnimationOptions) {
-        UIView.transition(with: label, duration: 0.7, options: options, animations: {})
+        UIView.transition(with: label, duration: 0.3, options: options, animations: {})
     }
 }
 

@@ -30,9 +30,8 @@ class MathProblemModel {
     
     private func whatTheOperation() {
         
-        var rand : UInt32 = 0
-        
-        rand = arc4random_uniform(4)
+        var rand = 0
+        rand = Int.random(in: 0...3)
         
         switch rand {
         case 0:
@@ -59,17 +58,17 @@ class MathProblemModel {
     
     private func generateFirstSecondNumbersNoDiv() {
         
-        leftNumber = Int(arc4random_uniform(110))
-        rightNumber = Int(arc4random_uniform(110))
+        leftNumber = Int.random(in: 0...110)
+        rightNumber = Int.random(in: 0...110)
     }
     private func generateFirstSecondNumbersForDiv() {
-        leftNumber = noZero(number: (Int(arc4random_uniform(10))))
-        rightNumber = leftNumber * noZero(number: (Int(arc4random_uniform(10))))
+        leftNumber = noZero(number: (Int.random(in: 0...10)))
+        rightNumber = leftNumber * noZero(number: (Int.random(in: 0...10)))
     }
     private func generateFirstSecondNumbersForMult() {
         
-        leftNumber = noZero(number: Int(arc4random_uniform(10)))
-        rightNumber = noZero(number: Int(arc4random_uniform(10)))
+        leftNumber = noZero(number: Int.random(in: 0...10))
+        rightNumber = noZero(number: Int.random(in: 0...10))
     }
     private func generateRandomNumbers() {
         switch operation {
