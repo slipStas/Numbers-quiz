@@ -23,6 +23,7 @@ class LeaderBoardViewController: UIViewController {
         
         guard let results = try? GameRecordsCaretaker.shared.loadResult()  else {return}
         self.records = results
+        records.reverse()
         
         self.leaderBoardTableView.reloadData()
     }
