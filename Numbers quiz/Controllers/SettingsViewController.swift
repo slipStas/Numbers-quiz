@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
+        sender.feedback()
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             Session.shared.defaults.setValue(0, forKey: "difficulty")

@@ -49,6 +49,8 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         falseAnswers(countFalseAnswers)
     }
     
+    private let difficultyStrategyFacade = DifficultyStrategyFacade()
+    
     var math = MathProblemModel()
     var countTrueAnswers = 0 {
         didSet {
@@ -84,18 +86,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     
     func start() {
         
-        switch math.difficulty {
-        case 0:
-            math.mathCreationStrategy = EasyMathCreationStrategy()
-        case 1:
-            math.mathCreationStrategy = NormalMathCreationStrategy()
-        case 2:
-            math.mathCreationStrategy = HardMathCreationStrategy()
-        case 3:
-            math.mathCreationStrategy = ExpertMathCreationStrategy()
-        default:
-            break
-        }
+        difficultyStrategyFacade.configuredFor(math: math)
         
         math.generateFullMathProblem()
         readyMathProblem = math.fullMathProblem ?? "error"
