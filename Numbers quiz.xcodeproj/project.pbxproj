@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8E06161324CF5A3900A0FEF4 /* MathProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */; };
 		8E06161524CF61E400A0FEF4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06161424CF61E400A0FEF4 /* Session.swift */; };
+		8E2E6100250A4C5900625F9C /* SegmentedControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */; };
+		8E2E6102250A4DB200625F9C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E6101250A4DB200625F9C /* UIView.swift */; };
 		8E3AEA7824DB885D00C96001 /* MainSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */; };
 		8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */; };
 		8E655D6A2506759100FFF439 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D692506759100FFF439 /* StartViewController.swift */; };
@@ -17,6 +19,7 @@
 		8E655D7225077ECA00FFF439 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D7125077ECA00FFF439 /* Difficulty.swift */; };
 		8E655D742507850100FFF439 /* MathCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D732507850100FFF439 /* MathCreationStrategy.swift */; };
 		8E655D792508D77C00FFF439 /* DifficultyStrategyFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D782508D77C00FFF439 /* DifficultyStrategyFacade.swift */; };
+		8E655D7C250A3B3900FFF439 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E655D7B250A3B3900FFF439 /* SettingsViewModel.swift */; };
 		8E69F70A24DE327200FA3B46 /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */; };
 		8E69F70C24DE3A7F00FA3B46 /* GameResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */; };
 		8E69F70E24DE417C00FA3B46 /* GameRecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69F70D24DE417C00FA3B46 /* GameRecordsCaretaker.swift */; };
@@ -34,6 +37,8 @@
 /* Begin PBXFileReference section */
 		8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblemModel.swift; sourceTree = "<group>"; };
 		8E06161424CF61E400A0FEF4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlModel.swift; sourceTree = "<group>"; };
+		8E2E6101250A4DB200625F9C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDelegate.swift; sourceTree = "<group>"; };
 		8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8E655D692506759100FFF439 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +47,7 @@
 		8E655D7125077ECA00FFF439 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		8E655D732507850100FFF439 /* MathCreationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathCreationStrategy.swift; sourceTree = "<group>"; };
 		8E655D782508D77C00FFF439 /* DifficultyStrategyFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyStrategyFacade.swift; sourceTree = "<group>"; };
+		8E655D7B250A3B3900FFF439 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultModel.swift; sourceTree = "<group>"; };
 		8E69F70D24DE417C00FA3B46 /* GameRecordsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordsCaretaker.swift; sourceTree = "<group>"; };
@@ -79,13 +85,20 @@
 			path = Patterns;
 			sourceTree = "<group>";
 		};
+		8E655D7A250A3B0000FFF439 /* View models */ = {
+			isa = PBXGroup;
+			children = (
+				8EF52C9D250A420C00509836 /* SettingsViewModel and Controller */,
+				8EF52C9C250A41EB00509836 /* MainViewModel and Controller */,
+			);
+			path = "View models";
+			sourceTree = "<group>";
+		};
 		8EE703E824DE2BF3007876B6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */,
 				8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */,
 				8E655D692506759100FFF439 /* StartViewController.swift */,
-				8E655D6B2506760A00FFF439 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,6 +109,24 @@
 				8EE703EA24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift */,
 			);
 			path = "Table cells";
+			sourceTree = "<group>";
+		};
+		8EF52C9C250A41EB00509836 /* MainViewModel and Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */,
+				8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */,
+			);
+			path = "MainViewModel and Controller";
+			sourceTree = "<group>";
+		};
+		8EF52C9D250A420C00509836 /* SettingsViewModel and Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E655D7B250A3B3900FFF439 /* SettingsViewModel.swift */,
+				8E655D6B2506760A00FFF439 /* SettingsViewController.swift */,
+			);
+			path = "SettingsViewModel and Controller";
 			sourceTree = "<group>";
 		};
 		8EFB41C524CD9F580085BDA5 = {
@@ -119,12 +150,12 @@
 			children = (
 				8E655D772508D72D00FFF439 /* Patterns */,
 				8EE703E924DE2CA6007876B6 /* Table cells */,
+				8E655D7A250A3B0000FFF439 /* View models */,
 				8EE703E824DE2BF3007876B6 /* Controllers */,
 				8EFB41EC24CDAA3D0085BDA5 /* Models */,
 				8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */,
 				8EFB41D724CD9F580085BDA5 /* Main.storyboard */,
 				8EFB41D324CD9F580085BDA5 /* SceneDelegate.swift */,
-				8E4EA1A524CDF5DA004D10EB /* MainViewModel.swift */,
 				8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */,
 				8EFB41DD24CD9F5C0085BDA5 /* Assets.xcassets */,
 				8EFB41DF24CD9F5C0085BDA5 /* LaunchScreen.storyboard */,
@@ -138,11 +169,13 @@
 			isa = PBXGroup;
 			children = (
 				8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */,
+				8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */,
 				8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */,
 				8E06161424CF61E400A0FEF4 /* Session.swift */,
 				8E69F70B24DE3A7F00FA3B46 /* GameResultModel.swift */,
 				8E655D6D25068A9F00FFF439 /* ColorsModel.swift */,
 				8E655D7125077ECA00FFF439 /* Difficulty.swift */,
+				8E2E6101250A4DB200625F9C /* UIView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +253,7 @@
 			files = (
 				8E3AEA7824DB885D00C96001 /* MainSceneDelegate.swift in Sources */,
 				8E655D6A2506759100FFF439 /* StartViewController.swift in Sources */,
+				8E2E6102250A4DB200625F9C /* UIView.swift in Sources */,
 				8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */,
 				8E06161324CF5A3900A0FEF4 /* MathProblemModel.swift in Sources */,
 				8E655D792508D77C00FFF439 /* DifficultyStrategyFacade.swift in Sources */,
@@ -233,6 +267,8 @@
 				8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */,
 				8EE703EB24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift in Sources */,
 				8E69F70E24DE417C00FA3B46 /* GameRecordsCaretaker.swift in Sources */,
+				8E655D7C250A3B3900FFF439 /* SettingsViewModel.swift in Sources */,
+				8E2E6100250A4C5900625F9C /* SegmentedControlModel.swift in Sources */,
 				8E69F70C24DE3A7F00FA3B46 /* GameResultModel.swift in Sources */,
 				8E655D7225077ECA00FFF439 /* Difficulty.swift in Sources */,
 				8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */,

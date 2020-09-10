@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum StartStopStatus: String {
+enum StartStopStatusEnum: String {
     case start = "Start"
     case stop = "Stop"
 }
@@ -22,11 +22,10 @@ protocol MainViewModelInput {
 
 protocol MainViewModelOutput {
     var mathProblem: ((String) -> Void)? {get set}
-    var startStopStatus: ((StartStopStatus) -> Void)? {get set}
+    var startStopStatus: ((StartStopStatusEnum) -> Void)? {get set}
     var correctAnswerStatus: ((Bool) -> Void)? {get set}
     var trueAnswers: ((Int) -> Void) {get set}
     var falseAnswers: ((Int) -> Void) {get set}
-
 }
 
 class MainViewModel: MainViewModelInput, MainViewModelOutput {
@@ -36,10 +35,10 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     var trueAnswers: ((Int) -> Void)
     var falseAnswers: ((Int) -> Void)
     var correctAnswerStatus: ((Bool) -> Void)?
-    var startStopStatus: ((StartStopStatus) -> Void)?
+    var startStopStatus: ((StartStopStatusEnum) -> Void)?
     var mathProblem: ((String) -> Void)?
     
-    init(status: StartStopStatus, startStopStatus: @escaping (StartStopStatus) -> Void, trueAnswers: @escaping ((Int) -> Void), falseAnswers: @escaping ((Int) -> Void)) {
+    init(status: StartStopStatusEnum, startStopStatus: @escaping (StartStopStatusEnum) -> Void, trueAnswers: @escaping ((Int) -> Void), falseAnswers: @escaping ((Int) -> Void)) {
         self.statusStartStop = status
         self.startStopStatus = startStopStatus
         self.trueAnswers = trueAnswers
@@ -62,7 +61,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             falseAnswers(countFalseAnswers)
         }
     }
-    var statusStartStop: StartStopStatus {
+    var statusStartStop: StartStopStatusEnum {
         didSet {
             startStopStatus?(statusStartStop)
         }
@@ -107,7 +106,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     }
     
     func stop() {
-        readyMathProblem = "stopped" 
+        readyMathProblem = math.fullMathProblem ?? "no math problem"
         statusStartStop = .start
         Session.shared.userAnswer.removeAll()
     }

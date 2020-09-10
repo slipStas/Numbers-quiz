@@ -34,9 +34,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = MainViewModel(status: .start, startStopStatus: { [weak self] (status) in
-            
         guard let self = self else {return}
-            
         self.startStopButton.setTitle(status.rawValue, for: .normal)
             }, trueAnswers: { [weak self] (trueAnswers) in
                 self?.animateAnswerCounter(label: (self?.countTrueAnswersLabel)!, options: .transitionFlipFromBottom)
@@ -115,7 +113,7 @@ class MainViewController: UIViewController {
     }
     
     func prepareLabels() {
-        self.taskLabel.text = "For start press <Start> button"
+        self.taskLabel.text = "Press <Start> button"
         self.answerLabel.text?.removeAll()
         self.taskLabel.font = UIFont.systemFont(ofSize: 20)
         self.answerLabel.font = UIFont.systemFont(ofSize: 20)

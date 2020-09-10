@@ -43,8 +43,8 @@ extension LeaderBoardViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
-        // for russian language
-        //dateFormatter.locale = Locale(identifier: "ru_RU")
+        /// for russian language
+        /// dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "HH:mm  EEE, d MMMM"
         
         cell.Score.text = "Score: "
@@ -55,6 +55,4 @@ extension LeaderBoardViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }

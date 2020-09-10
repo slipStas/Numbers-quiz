@@ -70,10 +70,3 @@ class NumberButtonModel: UIButton {
     }
 }
 
-extension UIView {
-    func feedback() {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.prepare()
-        generator.impactOccurred()
-    }
-}

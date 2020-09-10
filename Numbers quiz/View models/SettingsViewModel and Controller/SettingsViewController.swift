@@ -12,8 +12,10 @@ class SettingsViewController: UIViewController {
     
     private var difficultyArray: [Difficulty] = []
     
+    var settingsViewModel : SettingsViewModel?
+    
     let difficultyLabel = UILabel()
-    let segmentedControl = UISegmentedControl()
+    let segmentedControl = SegmentedControlModel(frame: .zero, font: 20)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +24,16 @@ class SettingsViewController: UIViewController {
         
         addViews()
         
-        segmentedControl.selectedSegmentIndex = Session.shared.defaults.integer(forKey: "difficulty")
+        settingsViewModel = SettingsViewModel(selectedIndex: { (index) in
+            self.segmentedControl.selectedSegmentIndex = index
+        })
+        
         segmentedControl.addTarget(self, action: #selector(indexChanged(_:)), for: .valueChanged)
     }
     
     @objc func indexChanged(_ sender: UISegmentedControl) {
         sender.feedback()
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            Session.shared.defaults.setValue(0, forKey: "difficulty")
-        case 1:
-            Session.shared.defaults.setValue(1, forKey: "difficulty")
-        case 2:
-            Session.shared.defaults.setValue(2, forKey: "difficulty")
-        case 3:
-            Session.shared.defaults.setValue(3, forKey: "difficulty")
-        default:
-            break
-        }
+        settingsViewModel?.saveDifficulty(index: self.segmentedControl.selectedSegmentIndex)
     }
     
     func addDifficultyLevels() {
@@ -59,22 +53,16 @@ class SettingsViewController: UIViewController {
         difficultyLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
         difficultyLabel.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        let font : [AnyHashable : Any] = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)]
-        
-        segmentedControl.setTitleTextAttributes((font as! [NSAttributedString.Key : Any]), for: .normal)
-        segmentedControl.backgroundColor = .myOrange
-        segmentedControl.selectedSegmentTintColor = .myGray
         self.view.addSubview(self.segmentedControl)
         
         for (index, item) in self.difficultyArray.enumerated() {
             segmentedControl.insertSegment(withTitle: item.rawValue, at: index, animated: true)
         }
-        
+        segmentedControl.fontSegmentedControl = 20
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
         segmentedControl.topAnchor.constraint(equalTo: difficultyLabel.bottomAnchor, constant: 8).isActive = true
         segmentedControl.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
     }
 }
