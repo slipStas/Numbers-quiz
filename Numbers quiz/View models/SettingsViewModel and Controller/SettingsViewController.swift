@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
         
         self.view.backgroundColor = .systemBackground
         
-        addViews()
+        setupViews()
         
         settingsViewModel = SettingsViewModel(selectedIndex: { (index) in
             self.segmentedControl.selectedSegmentIndex = index
@@ -40,10 +40,9 @@ class SettingsViewController: UIViewController {
         self.difficultyArray.append(contentsOf: [.easy, .normal, .hard, .expert])
     }
     
-    func addViews() {
+    func setupViews() {
         addDifficultyLevels()
         
-        difficultyLabel.font = UIFont.systemFont(ofSize: 20)
         difficultyLabel.text = "Choose the difficulty"
         self.view.addSubview(difficultyLabel)
         
