@@ -23,10 +23,10 @@ class LeaderBoardViewController: UIViewController {
         
         guard let results = try? GameRecordsCaretaker.shared.loadResult()  else {return}
         self.records = results
+        records.reverse()
         
         self.leaderBoardTableView.reloadData()
     }
-    
 }
 
 extension LeaderBoardViewController: UITableViewDataSource {
@@ -43,14 +43,16 @@ extension LeaderBoardViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
-        //dateFormatter.locale = Locale(identifier: "ru_RU")
+        /// for russian language
+        /// dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "HH:mm  EEE, d MMMM"
         
-        cell.resultLabel.text = "Score: \(String(record.value ?? 0))"
+        cell.Score.text = "Score: "
+        cell.trueCount.text = String(record.trueAnswers ?? 0)
+        cell.slash.text = " / "
+        cell.falseCount.text = String(record.falseAnswers ?? 0)
         cell.dateLabel.text = dateFormatter.string(from: record.date ?? Date())
         
         return cell
     }
-    
-    
 }

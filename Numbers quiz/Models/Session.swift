@@ -13,4 +13,6 @@ class Session {
     private init() {}
     
     var userAnswer = String()
+    
+    let defaults = UserDefaults.standard
 }

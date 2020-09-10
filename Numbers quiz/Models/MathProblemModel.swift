@@ -14,11 +14,17 @@ enum Operation: String {
     case mult = "*"
     case div = "/"
 }
+class MathNumbers {
+    var leftNumber: Int = 0
+    var rightNumber: Int = 0
+}
 
 class MathProblemModel {
     
-    var leftNumber: Int = 0
-    var rightNumber: Int = 0
+    var mathCreationStrategy : MathCreationStrategy?
+    var difficulty = Session.shared.defaults.integer(forKey: "difficulty")
+    
+    var numbers = MathNumbers()
     var operation: Operation?
     var result: Int = 0 {
         didSet {
@@ -30,69 +36,46 @@ class MathProblemModel {
     
     private func whatTheOperation() {
         
-        var rand : UInt32 = 0
-        
-        rand = arc4random_uniform(4)
-        
-        switch rand {
-        case 0:
-            operation = Operation.subt
-        case 1:
-            operation = Operation.add
-        case 2:
-            operation = Operation.mult
-        case 3:
-            operation = Operation.div
-        default:
-            break
-        }
-    }
-    
-    private func noZero(number : Int) -> Int {
-        
-        if number == 0 {
-            return 1
-        } else {
-            return number
-        }
+        operation = mathCreationStrategy?.whatTheOperation()
     }
     
     private func generateFirstSecondNumbersNoDiv() {
         
-        leftNumber = Int(arc4random_uniform(110))
-        rightNumber = Int(arc4random_uniform(110))
+        guard let generateNumbersNoDiv = mathCreationStrategy?.generateFirstSecondNumbersNoDiv() else {return}
+        numbers = generateNumbersNoDiv
     }
     private func generateFirstSecondNumbersForDiv() {
-        leftNumber = noZero(number: (Int(arc4random_uniform(10))))
-        rightNumber = leftNumber * noZero(number: (Int(arc4random_uniform(10))))
+        
+        guard let generateNumbersNoDiv = mathCreationStrategy?.generateFirstSecondNumbersForDiv() else {return}
+        numbers = generateNumbersNoDiv
     }
     private func generateFirstSecondNumbersForMult() {
         
-        leftNumber = noZero(number: Int(arc4random_uniform(10)))
-        rightNumber = noZero(number: Int(arc4random_uniform(10)))
+        guard let generateNumbersNoDiv = mathCreationStrategy?.generateFirstSecondNumbersForMult() else {return}
+        numbers = generateNumbersNoDiv
     }
     private func generateRandomNumbers() {
         switch operation {
         case .subt:
             generateFirstSecondNumbersNoDiv()
             
-            if leftNumber >= rightNumber {
-                result = leftNumber - rightNumber
+            if numbers.leftNumber >= numbers.rightNumber {
+                result = numbers.leftNumber - numbers.rightNumber
             } else {
-                result = rightNumber - leftNumber
+                result = numbers.rightNumber - numbers.leftNumber
             }
         case .add:
             generateFirstSecondNumbersNoDiv()
             
-            result = leftNumber + rightNumber
+            result = numbers.leftNumber + numbers.rightNumber
         case .mult:
             generateFirstSecondNumbersForMult()
             
-            result = leftNumber * rightNumber
+            result = numbers.leftNumber * numbers.rightNumber
         case .div:
             generateFirstSecondNumbersForDiv()
             
-            result = rightNumber / leftNumber
+            result = numbers.rightNumber / numbers.leftNumber
         default:
             break
         }
@@ -102,10 +85,10 @@ class MathProblemModel {
         
         guard let operation = self.operation else {return}
         
-        if operation == Operation.subt && leftNumber < rightNumber || operation == Operation.div {
-            fullMathProblem = String(rightNumber) + operation.rawValue + String(leftNumber) + "  ="
+        if operation == Operation.subt && numbers.leftNumber < numbers.rightNumber || operation == Operation.div {
+            fullMathProblem = String(numbers.rightNumber) + operation.rawValue + String(numbers.leftNumber) + "  ="
         } else {
-            fullMathProblem = String(leftNumber) + operation.rawValue + String(rightNumber) + "  ="
+            fullMathProblem = String(numbers.leftNumber) + operation.rawValue + String(numbers.rightNumber) + "  ="
         }
     }
     

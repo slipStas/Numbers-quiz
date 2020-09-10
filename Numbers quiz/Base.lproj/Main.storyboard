@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="pmx-JH-dmJ">
             <objects>
-                <viewController id="CRl-7T-Yyt" sceneMemberID="viewController">
+                <viewController id="CRl-7T-Yyt" customClass="StartViewController" customModule="Numbers_quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vrm-js-XQM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,8 +18,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="7V5-s0-aEO">
                                 <rect key="frame" x="50" y="162.5" width="314" height="571"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwx-Wq-JIc" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcK-bp-k9k" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
+                                        <state key="normal" title="Settings"/>
+                                        <connections>
+                                            <action selector="settings:" destination="CRl-7T-Yyt" eventType="touchUpInside" id="bPU-lc-jI4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwx-Wq-JIc" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="270.5" width="314" height="30"/>
                                         <state key="normal" title="Start game"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="NBg-DF-qtC"/>
@@ -182,16 +189,25 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFc-c6-qYr">
                                 <rect key="frame" x="3" y="502" width="408" height="51"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxB-0h-I9O" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="202.5" height="51"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGA-s6-pkF" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="51"/>
                                         <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="11"/>
+                                        <state key="normal" title="Finish"/>
+                                        <connections>
+                                            <action selector="finishGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NDa-qY-wGC"/>
+                                            <action selector="startStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6H1-h9-W4I"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxB-0h-I9O" userLabel="Start Stop" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
+                                        <rect key="frame" x="137" y="0.0" width="134" height="51"/>
+                                        <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Start/Stop"/>
                                         <connections>
                                             <action selector="startStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TM0-4j-fuB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-64-Ugv" customClass="NumberButtonModel" customModule="Numbers_quiz" customModuleProvider="target">
-                                        <rect key="frame" x="205.5" y="0.0" width="202.5" height="51"/>
+                                        <rect key="frame" x="274" y="0.0" width="134" height="51"/>
                                         <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Check"/>
                                         <connections>
@@ -221,25 +237,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-qg-RVS">
-                                <rect key="frame" x="8" y="393" width="50.5" height="101"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="M1e-qg-RVS">
+                                <rect key="frame" x="8" y="449" width="42" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9r5-wb-9VA">
-                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNF-dF-LFI">
-                                        <rect key="frame" x="0.0" y="50.5" width="50.5" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="M1e-qg-RVS" secondAttribute="height" multiplier="1:2" id="dGd-ir-3qt"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -250,7 +263,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wFc-c6-qYr" secondAttribute="trailing" constant="3" id="Prl-tz-LgF"/>
                             <constraint firstItem="6KD-pM-Ztx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="QQY-Gb-0f9"/>
                             <constraint firstItem="6KD-pM-Ztx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="SKs-ob-DEV"/>
-                            <constraint firstItem="M1e-qg-RVS" firstAttribute="width" secondItem="vxB-0h-I9O" secondAttribute="width" multiplier="0.25" id="X2U-fw-rXG"/>
                             <constraint firstItem="wFc-c6-qYr" firstAttribute="top" secondItem="M1e-qg-RVS" secondAttribute="bottom" constant="8" id="Yq3-KD-6dk"/>
                             <constraint firstItem="2FH-MY-aY4" firstAttribute="top" secondItem="wFc-c6-qYr" secondAttribute="bottom" constant="3" id="aLQ-hf-F8w"/>
                             <constraint firstItem="76V-EV-SWH" firstAttribute="leading" secondItem="6KD-pM-Ztx" secondAttribute="trailing" constant="10" id="sDU-2F-Vuc"/>
@@ -264,8 +276,10 @@
                     <navigationItem key="navigationItem" id="WoI-17-Eif"/>
                     <connections>
                         <outlet property="answerLabel" destination="76V-EV-SWH" id="YUT-pN-uOy"/>
+                        <outlet property="checkButton" destination="1TR-64-Ugv" id="QTr-U4-zIq"/>
                         <outlet property="countFalseAnswersLabel" destination="zNF-dF-LFI" id="G46-vc-Bav"/>
                         <outlet property="countTrueAnswersLabel" destination="9r5-wb-9VA" id="JxO-75-qqB"/>
+                        <outlet property="numberButtons" destination="2FH-MY-aY4" id="Skk-EY-0rm"/>
                         <outlet property="startStopButton" destination="vxB-0h-I9O" id="Brp-Gs-eWO"/>
                         <outlet property="taskLabel" destination="6KD-pM-Ztx" id="Cbp-Yo-Ltk"/>
                     </connections>
@@ -293,32 +307,58 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp7-Qq-HKY">
-                                                    <rect key="frame" x="8" y="8" width="57" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfK-uG-1tb">
                                                     <rect key="frame" x="8" y="45" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-lM-TQx">
+                                                    <rect key="frame" x="8" y="8" width="228" height="29"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp7-Qq-HKY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="57" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnN-pa-Atl">
+                                                            <rect key="frame" x="57" y="0.0" width="57" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOw-lz-04T">
+                                                            <rect key="frame" x="114" y="0.0" width="57" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nm1-3S-3Uz">
+                                                            <rect key="frame" x="171" y="0.0" width="57" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sp7-Qq-HKY" secondAttribute="trailing" constant="8" id="0W3-mS-7pG"/>
-                                                <constraint firstItem="Sp7-Qq-HKY" firstAttribute="leading" secondItem="y7q-GJ-Ah0" secondAttribute="leading" constant="8" id="2Xm-Oo-kA4"/>
-                                                <constraint firstItem="Sp7-Qq-HKY" firstAttribute="top" secondItem="y7q-GJ-Ah0" secondAttribute="top" constant="8" id="GyA-Wb-gX5"/>
-                                                <constraint firstItem="PfK-uG-1tb" firstAttribute="top" secondItem="Sp7-Qq-HKY" secondAttribute="bottom" constant="8" id="XZM-Zp-hiC"/>
+                                                <constraint firstItem="PfK-uG-1tb" firstAttribute="top" secondItem="CFd-lM-TQx" secondAttribute="bottom" constant="8" id="La6-Ie-W1E"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CFd-lM-TQx" secondAttribute="trailing" constant="8" id="Lj1-j5-UBH"/>
+                                                <constraint firstItem="CFd-lM-TQx" firstAttribute="leading" secondItem="y7q-GJ-Ah0" secondAttribute="leading" constant="8" id="RBr-cJ-u4k"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PfK-uG-1tb" secondAttribute="trailing" constant="8" id="cwg-ki-LbR"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PfK-uG-1tb" secondAttribute="bottom" constant="8" id="kTh-gv-alf"/>
                                                 <constraint firstItem="PfK-uG-1tb" firstAttribute="leading" secondItem="y7q-GJ-Ah0" secondAttribute="leading" constant="8" id="oPo-Ih-FtD"/>
+                                                <constraint firstItem="CFd-lM-TQx" firstAttribute="top" secondItem="y7q-GJ-Ah0" secondAttribute="top" constant="8" id="utT-8T-0Kf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="Score" destination="Sp7-Qq-HKY" id="PQG-zb-n2x"/>
                                             <outlet property="dateLabel" destination="PfK-uG-1tb" id="8YC-CS-biV"/>
-                                            <outlet property="resultLabel" destination="Sp7-Qq-HKY" id="PQG-zb-n2x"/>
+                                            <outlet property="falseCount" destination="Nm1-3S-3Uz" id="9qG-h1-x6d"/>
+                                            <outlet property="slash" destination="MOw-lz-04T" id="IR5-re-BLV"/>
+                                            <outlet property="trueCount" destination="ZnN-pa-Atl" id="ceZ-IX-BDm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

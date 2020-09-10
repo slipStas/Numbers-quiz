@@ -10,12 +10,17 @@ import UIKit
 
 class LeaderBoardTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var Score: UILabel!
+    @IBOutlet weak var trueCount: UILabel!
+    @IBOutlet weak var slash: UILabel!
+    @IBOutlet weak var falseCount: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.trueCount.textColor = .myGreen
+        self.falseCount.textColor = .myRed
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
