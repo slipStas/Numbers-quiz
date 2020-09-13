@@ -69,8 +69,7 @@ class MainViewController: UIViewController {
     
     @IBAction func startStop(_ sender: UIButton) {
         
-        timerModel.animateCircle(duration: 10)
-        timerModel.animateColor(duration: 10)
+        timerModel.allNeedsAnimations(duration: 10, color: UIColor.myRed.cgColor)
         
         switch sender.titleLabel?.text {
         case "Start":

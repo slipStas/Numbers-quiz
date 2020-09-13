@@ -14,6 +14,15 @@ class TimerModel: UIView {
         let label = UILabel(frame: .zero)
         label.text = "10.0"
         label.textAlignment = .center
+        
+        label.layer.masksToBounds = false
+        label.clipsToBounds = false
+        
+        label.layer.shadowColor = UIColor.myGray.cgColor
+        label.layer.shadowRadius = 10
+        label.layer.borderWidth = 3
+        label.layer.borderColor = UIColor.myOrange.cgColor
+        
        
         return label
     }()
@@ -53,7 +62,39 @@ class TimerModel: UIView {
         circleLayer.path = circlePath.cgPath
         
         timerView.frame = bounds
-        timerView.font = UIFont.systemFont(ofSize: bounds.height / 3)
+        
+        print(self.timerView.frame.height)
+        
+        timerView.frame.size.height = self.timerView.frame.height * 0.8
+        timerView.frame.size.width = self.timerView.frame.width * 0.8
+        timerView.center = CGPoint(x: bounds.midX, y: bounds.midY)
+
+        
+        timerView.font = UIFont.systemFont(ofSize: bounds.height / 4)
+        timerView.layer.cornerRadius = self.timerView.frame.height / 2
+        print(self.timerView.frame.height)
+    }
+    
+    func allNeedsAnimations(duration time: TimeInterval, color: CGColor) {
+        animateCircle(duration: time)
+        animateColor(duration: time, color: color)
+        animateLabel(duration: time, color: color)
+    }
+    
+    func animateLabel(duration time: TimeInterval, color: CGColor) {
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.borderColor))
+        
+        animation.duration = time
+        animation.fromValue = self.timerView.layer.borderColor
+        animation.toValue = color
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = CAMediaTimingFillMode.both
+        
+        self.timerView.layer.borderColor = UIColor.red.cgColor
+        
+        animation.isRemovedOnCompletion = true
+        
+        self.timerView.layer.add(animation, forKey: "animateLabel")
         
     }
 
@@ -72,13 +113,18 @@ class TimerModel: UIView {
         circleLayer.add(animation, forKey: "animateCircle")
     }
     
-    func animateColor(duration time: TimeInterval) {
+    func animateColor(duration time: TimeInterval, color: CGColor) {
         let animation = CABasicAnimation(keyPath: "strokeColor")
         
         animation.fromValue = self.circleLayer.strokeColor
-        animation.toValue = UIColor.myRed.cgColor
+        animation.toValue = color
         animation.duration = time
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = CAMediaTimingFillMode.both
         
+        self.circleLayer.strokeColor = color
+        
+        animation.isRemovedOnCompletion = true
         
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
