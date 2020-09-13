@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Pattern FlyWeight
+
 class NumberButtonModel: UIButton {
     
     override init(frame: CGRect) {

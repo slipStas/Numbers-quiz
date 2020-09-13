@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicTimer
 
 class MainViewController: UIViewController {
     
@@ -29,6 +30,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var startStopButton: NumberButtonModel!
         
     @IBOutlet weak var checkButton: NumberButtonModel!
+    
+    @IBOutlet weak var timerModel: TimerModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +69,8 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func startStop(_ sender: UIButton) {
+        
+        timerModel.startCounting()
         
         switch sender.titleLabel?.text {
         case "Start":
