@@ -7,6 +7,4 @@ target 'Numbers quiz' do
 
   # Pods for Numbers quiz
 
-	pod 'MagicTimer'
-
 end

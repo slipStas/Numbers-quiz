@@ -33,9 +33,12 @@
 		8EFB41E124CD9F5C0085BDA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41DF24CD9F5C0085BDA5 /* LaunchScreen.storyboard */; };
 		8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */; };
 		8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */; };
+		D265B174B60233300D42A472 /* Pods_Numbers_quiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50B5D15A61574400EE43C5B /* Pods_Numbers_quiz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54B1585E97B76AB215968BE7 /* Pods-Numbers quiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numbers quiz.release.xcconfig"; path = "Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz.release.xcconfig"; sourceTree = "<group>"; };
+		8C079F31169E3FBB1B368E7F /* Pods-Numbers quiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numbers quiz.debug.xcconfig"; path = "Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz.debug.xcconfig"; sourceTree = "<group>"; };
 		8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblemModel.swift; sourceTree = "<group>"; };
 		8E06161424CF61E400A0FEF4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlModel.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		8EFB41E224CD9F5C0085BDA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButtonModel.swift; sourceTree = "<group>"; };
+		A50B5D15A61574400EE43C5B /* Pods_Numbers_quiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Numbers_quiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +75,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D265B174B60233300D42A472 /* Pods_Numbers_quiz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BF36A67F246F09BBDA8ADAC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C079F31169E3FBB1B368E7F /* Pods-Numbers quiz.debug.xcconfig */,
+				54B1585E97B76AB215968BE7 /* Pods-Numbers quiz.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8E655D772508D72D00FFF439 /* Patterns */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +151,8 @@
 			children = (
 				8EFB41D024CD9F580085BDA5 /* Numbers quiz */,
 				8EFB41CF24CD9F580085BDA5 /* Products */,
+				3BF36A67F246F09BBDA8ADAC /* Pods */,
+				93A5C444CB9E4C92E370AF7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +200,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		93A5C444CB9E4C92E370AF7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A50B5D15A61574400EE43C5B /* Pods_Numbers_quiz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,7 +219,6 @@
 				8EFB41CA24CD9F580085BDA5 /* Sources */,
 				8EFB41CB24CD9F580085BDA5 /* Frameworks */,
 				8EFB41CC24CD9F580085BDA5 /* Resources */,
-				7DEA01427A4C531188FD2C39 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,23 +276,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7DEA01427A4C531188FD2C39 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F2A133B9894F1F79E946595F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,6 +469,7 @@
 		};
 		8EFB41E624CD9F5C0085BDA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C079F31169E3FBB1B368E7F /* Pods-Numbers quiz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -481,6 +489,7 @@
 		};
 		8EFB41E724CD9F5C0085BDA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54B1585E97B76AB215968BE7 /* Pods-Numbers quiz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
