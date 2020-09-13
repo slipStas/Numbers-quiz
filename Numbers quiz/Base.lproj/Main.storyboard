@@ -254,7 +254,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJh-zv-xMY" customClass="MagicTimerView" customModule="MagicTimer">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJh-zv-xMY" customClass="TimerModel" customModule="Numbers_quiz" customModuleProvider="target">
                                 <rect key="frame" x="132" y="194" width="150" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -325,7 +325,7 @@
                         <outlet property="numberButtons" destination="2FH-MY-aY4" id="Skk-EY-0rm"/>
                         <outlet property="startStopButton" destination="vxB-0h-I9O" id="Brp-Gs-eWO"/>
                         <outlet property="taskLabel" destination="6KD-pM-Ztx" id="Cbp-Yo-Ltk"/>
-                        <outlet property="timerModel" destination="WJh-zv-xMY" id="nQJ-6K-fJl"/>
+                        <outlet property="timerModel" destination="WJh-zv-xMY" id="2tz-i0-qkI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

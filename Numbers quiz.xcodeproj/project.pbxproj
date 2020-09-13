@@ -33,12 +33,9 @@
 		8EFB41E124CD9F5C0085BDA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EFB41DF24CD9F5C0085BDA5 /* LaunchScreen.storyboard */; };
 		8EFB41E924CDA0F80085BDA5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */; };
 		8EFB41EB24CDA28B0085BDA5 /* NumberButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */; };
-		AF75CEF848A346158A83B583 /* Pods_Numbers_quiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A65F5BA6EE3C46B1D41EDC5 /* Pods_Numbers_quiz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A65F5BA6EE3C46B1D41EDC5 /* Pods_Numbers_quiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Numbers_quiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AFC3BFB775227284F2BB3EE /* Pods-Numbers quiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numbers quiz.release.xcconfig"; path = "Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz.release.xcconfig"; sourceTree = "<group>"; };
 		8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblemModel.swift; sourceTree = "<group>"; };
 		8E06161424CF61E400A0FEF4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlModel.swift; sourceTree = "<group>"; };
@@ -67,7 +64,6 @@
 		8EFB41E224CD9F5C0085BDA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EFB41E824CDA0F80085BDA5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8EFB41EA24CDA28B0085BDA5 /* NumberButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButtonModel.swift; sourceTree = "<group>"; };
-		ACA24B905E18AFE8286C2935 /* Pods-Numbers quiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numbers quiz.debug.xcconfig"; path = "Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,30 +71,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF75CEF848A346158A83B583 /* Pods_Numbers_quiz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02C6C1D71DBD074425653A70 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				ACA24B905E18AFE8286C2935 /* Pods-Numbers quiz.debug.xcconfig */,
-				8AFC3BFB775227284F2BB3EE /* Pods-Numbers quiz.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		36A26D77EEA228650B811725 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1A65F5BA6EE3C46B1D41EDC5 /* Pods_Numbers_quiz.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8E655D772508D72D00FFF439 /* Patterns */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,8 +136,6 @@
 			children = (
 				8EFB41D024CD9F580085BDA5 /* Numbers quiz */,
 				8EFB41CF24CD9F580085BDA5 /* Products */,
-				02C6C1D71DBD074425653A70 /* Pods */,
-				36A26D77EEA228650B811725 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -486,7 +462,6 @@
 		};
 		8EFB41E624CD9F5C0085BDA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACA24B905E18AFE8286C2935 /* Pods-Numbers quiz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -506,7 +481,6 @@
 		};
 		8EFB41E724CD9F5C0085BDA5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AFC3BFB775227284F2BB3EE /* Pods-Numbers quiz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

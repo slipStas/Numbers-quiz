@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MagicTimer
 
 class MainViewController: UIViewController {
     
@@ -70,7 +69,7 @@ class MainViewController: UIViewController {
     
     @IBAction func startStop(_ sender: UIButton) {
         
-        timerModel.startCounting()
+        timerModel.animateCircle(duration: 10)
         
         switch sender.titleLabel?.text {
         case "Start":
