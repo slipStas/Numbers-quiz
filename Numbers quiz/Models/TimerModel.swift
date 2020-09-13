@@ -10,14 +10,20 @@ import UIKit
 
 class TimerModel: UIView {
     
+    let timerView: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "10.0"
+        label.textAlignment = .center
+       
+        return label
+    }()
+    
     let circleLayer: CAShapeLayer = {
-        // Setup the CAShapeLayer with the path, colors, and line width
         let circle = CAShapeLayer()
         circle.fillColor = UIColor.clear.cgColor
-        circle.strokeColor = UIColor.red.cgColor
-        circle.lineWidth = 5.0
+        circle.strokeColor = UIColor.myGreen.cgColor
+        circle.lineWidth = 7.0
 
-        // Don't draw the circle initially
         circle.strokeEnd = 0.0
         return circle
     }()
@@ -34,39 +40,48 @@ class TimerModel: UIView {
 
     func setup(){
         backgroundColor = UIColor.clear
-
-        // Add the circleLayer to the view's layer's sublayers
+        
         layer.addSublayer(circleLayer)
+        addSubview(timerView)
+
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        // Use UIBezierPath as an easy way to create the CGPath for the layer.
-        // The path should be the entire circle.
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width - 10)/2, startAngle: 0.0, endAngle: CGFloat(Double.pi * 2.0), clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width) / 2, startAngle: 0.0, endAngle: CGFloat(Double.pi * 2.0), clockwise: true)
 
         circleLayer.path = circlePath.cgPath
+        
+        timerView.frame = bounds
+        timerView.font = UIFont.systemFont(ofSize: bounds.height / 3)
+        
     }
 
-    func animateCircle(duration t: TimeInterval) {
-        // We want to animate the strokeEnd property of the circleLayer
+    func animateCircle(duration time: TimeInterval) {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
 
-        // Set the animation duration appropriately
-        animation.duration = t
+        animation.duration = time
 
-        // Animate from 0 (no circle) to 1 (full circle)
         animation.fromValue = 0
         animation.toValue = 1
 
-        // Do a linear animation (i.e. the speed of the animation stays the same)
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
 
-        // Set the circleLayer's strokeEnd property to 1.0 now so that it's the
-        // right value when the animation ends.
         circleLayer.strokeEnd = 1.0
 
-        // Do the actual animation
         circleLayer.add(animation, forKey: "animateCircle")
+    }
+    
+    func animateColor(duration time: TimeInterval) {
+        let animation = CABasicAnimation(keyPath: "strokeColor")
+        
+        animation.fromValue = self.circleLayer.strokeColor
+        animation.toValue = UIColor.myRed.cgColor
+        animation.duration = time
+        
+        
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        
+        circleLayer.add(animation, forKey: "animateColor")
     }
 }
