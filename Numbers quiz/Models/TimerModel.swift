@@ -10,16 +10,32 @@ import UIKit
 
 class TimerModel: UIView {
     
+    var timer : Timer? = Timer()
+    
+    var timerCounter = 10.0 {
+//        willSet {
+//            if newValue <= 0.01 {
+//                stopTimer()
+//            }
+//        }
+        didSet {
+            if oldValue <= 0.02 {
+                stopTimer()
+            }
+            self.timerView.text = String(format: "%.02f", timerCounter)
+        }
+    }
+    
     let timerView: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "10.0"
         label.textAlignment = .center
         
-        label.layer.masksToBounds = false
-        label.clipsToBounds = false
-        
-        label.layer.shadowColor = UIColor.myGray.cgColor
-        label.layer.shadowRadius = 10
+        label.layer.backgroundColor = UIColor.systemBackground.cgColor
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowRadius = 20
+        label.layer.shadowOffset = .zero
+        label.layer.shadowOpacity = 1
         label.layer.borderWidth = 3
         label.layer.borderColor = UIColor.myOrange.cgColor
         
@@ -62,23 +78,47 @@ class TimerModel: UIView {
         circleLayer.path = circlePath.cgPath
         
         timerView.frame = bounds
-        
-        print(self.timerView.frame.height)
-        
+                
         timerView.frame.size.height = self.timerView.frame.height * 0.8
         timerView.frame.size.width = self.timerView.frame.width * 0.8
         timerView.center = CGPoint(x: bounds.midX, y: bounds.midY)
-
+        timerView.text = String(self.timerCounter)
         
         timerView.font = UIFont.systemFont(ofSize: bounds.height / 4)
         timerView.layer.cornerRadius = self.timerView.frame.height / 2
-        print(self.timerView.frame.height)
     }
     
-    func allNeedsAnimations(duration time: TimeInterval, color: CGColor) {
+    @objc func timerCountering() {
+        timerCounter -= 0.01
+    }
+    
+    func startTimer() {
+        print("start timer")
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerCountering), userInfo: nil, repeats: true)
+    }
+    
+    func pauseTimer() {
+        print("pause timer")
+        self.timer?.invalidate()
+    }
+    
+    func stopTimer() {
+        print("stop timer")
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+    
+    func pauseAnimation() {
+        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+        layer.speed = 0
+        layer.timeOffset = pausedTime
+    }
+    
+    func startAllNeedsAnimations(duration time: TimeInterval, color: CGColor) {
         animateCircle(duration: time)
         animateColor(duration: time, color: color)
         animateLabel(duration: time, color: color)
+        animateShadowColor(duration: time, color: color)
     }
     
     func animateLabel(duration time: TimeInterval, color: CGColor) {
@@ -129,5 +169,23 @@ class TimerModel: UIView {
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
         circleLayer.add(animation, forKey: "animateColor")
+    }
+    
+    func animateShadowColor(duration time: TimeInterval, color: CGColor) {
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.shadowColor))
+        
+        animation.fromValue = self.timerView.layer.shadowColor
+        animation.toValue = color
+        animation.duration = time
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = CAMediaTimingFillMode.both
+        
+        self.timerView.layer.shadowColor = color
+        
+        animation.isRemovedOnCompletion = true
+        
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        
+        self.timerView.layer.add(animation, forKey: "animateShadowColor")
     }
 }
