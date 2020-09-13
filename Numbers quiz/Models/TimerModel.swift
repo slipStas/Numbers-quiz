@@ -13,11 +13,6 @@ class TimerModel: UIView {
     var timer : Timer? = Timer()
     
     var timerCounter = 10.0 {
-//        willSet {
-//            if newValue <= 0.01 {
-//                stopTimer()
-//            }
-//        }
         didSet {
             if oldValue <= 0.02 {
                 stopTimer()
@@ -112,6 +107,15 @@ class TimerModel: UIView {
         let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
         layer.speed = 0
         layer.timeOffset = pausedTime
+    }
+    
+    func resumeAnimation() {
+        let pausedTime = layer.timeOffset
+        layer.speed = 1
+        layer.timeOffset = 0
+        layer.beginTime = 0
+        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        layer.beginTime = timeSincePause
     }
     
     func startAllNeedsAnimations(duration time: TimeInterval, color: CGColor) {

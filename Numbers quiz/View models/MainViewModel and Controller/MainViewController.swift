@@ -69,10 +69,13 @@ class MainViewController: UIViewController {
     
     @IBAction func startStop(_ sender: UIButton) {
         
-        timerModel.startAllNeedsAnimations(duration: 10, color: UIColor.myRed.cgColor)
-        
         switch sender.titleLabel?.text {
         case "Start":
+            if timerModel.timerCounter < 10.0 {
+                timerModel.resumeAnimation()
+            } else {
+                timerModel.startAllNeedsAnimations(duration: 10, color: UIColor.myRed.cgColor)
+            }
             timerModel.startTimer()
             isNumberButtonsEnable = true
         case "Stop":
