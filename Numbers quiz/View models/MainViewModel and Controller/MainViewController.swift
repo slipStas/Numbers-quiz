@@ -10,7 +10,34 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var viewModel: MainViewModel?
+    var viewModel: MainViewModel? {
+        didSet {
+            switch viewModel?.statusStartStop {
+            case .start:
+                viewModel?.start()
+                self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
+
+                if timerModel.timerCounter < 10.0 {
+                    timerModel.resumeAnimation()
+                } else {
+                    timerModel.startAllNeedsAnimations(duration: 10, color: UIColor.myRed.cgColor)
+                }
+                timerModel.startTimer()
+                isNumberButtonsEnable = true
+            case .stop:
+                viewModel?.stop()
+
+                if timerModel.timerCounter < 10.0 {
+                    timerModel.pauseTimer()
+                    timerModel.pauseAnimation()
+                }
+
+                isNumberButtonsEnable = false
+            case .none:
+                break
+            }
+        }
+    }
     
     var isNumberButtonsEnable : Bool? {
         didSet {
@@ -35,7 +62,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = MainViewModel(status: .start, startStopStatus: { [weak self] (status) in
+        viewModel = MainViewModel(status: .stop, startStopStatus: { [weak self] (status) in
         guard let self = self else {return}
         self.startStopButton.setTitle(status.rawValue, for: .normal)
             }, trueAnswers: { [weak self] (trueAnswers) in
@@ -55,7 +82,6 @@ class MainViewController: UIViewController {
             
             self.taskLabel.text = string
         }
-        
     }
     
     @IBAction func backspaseButton(_ sender: UIButton) {
@@ -69,8 +95,11 @@ class MainViewController: UIViewController {
     
     @IBAction func startStop(_ sender: UIButton) {
         
-        switch sender.titleLabel?.text {
-        case "Start":
+        switch viewModel?.statusStartStop {
+        case .start:
+            viewModel?.start()
+            self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
+            
             if timerModel.timerCounter < 10.0 {
                 timerModel.resumeAnimation()
             } else {
@@ -78,35 +107,31 @@ class MainViewController: UIViewController {
             }
             timerModel.startTimer()
             isNumberButtonsEnable = true
-        case "Stop":
+        case .stop:
+            viewModel?.stop()
+
             timerModel.pauseTimer()
             timerModel.pauseAnimation()
             isNumberButtonsEnable = false
-        default:
-            break
-        }
-        
-        sender.feedback()
-        switch viewModel?.statusStartStop {
-        case .start:
-            viewModel?.start()
-            self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
-        case .stop:
-            viewModel?.stop()
         case .none:
             break
         }
         
+        sender.feedback()
+        
         self.viewModel?.startStopStatus = { [weak self] status in
             self?.startStopButton.setTitle(status.rawValue, for: .normal)
         }
-        
     }
     
     @IBAction func check(_ sender: UIButton) {
         
         sender.feedback()
+        timerModel.pauseTimer()
+        timerModel.pauseAnimation()
+        
         viewModel?.check()
+                
         self.answerLabel.text?.removeAll()
         self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
     }

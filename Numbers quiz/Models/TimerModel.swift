@@ -10,6 +10,8 @@ import UIKit
 
 class TimerModel: UIView {
     
+    let counterSetup = 10.0
+    
     var timer : Timer? = Timer()
     
     var timerCounter = 10.0 {
