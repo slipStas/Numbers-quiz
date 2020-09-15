@@ -12,4 +12,5 @@ struct GameResultModel: Codable {
     var trueAnswers: Int?
     var falseAnswers: Int?
     var date: Date?
+    var mathSolutions: [String]?
 }

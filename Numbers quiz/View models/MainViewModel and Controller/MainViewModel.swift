@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum StartStopStatusEnum: String {
     case start = "Start"
@@ -16,7 +17,7 @@ enum StartStopStatusEnum: String {
 protocol MainViewModelInput {
     func start()
     func stop()
-    func check()
+    func check(time: String)
     func finish()
 }
 
@@ -51,6 +52,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     private let difficultyStrategyFacade = DifficultyStrategyFacade()
     
     var math = MathProblemModel()
+    var solutionsArray = GameResultModel(trueAnswers: 0, falseAnswers: 0, date: Date(), mathSolutions: [])
     var countTrueAnswers = 0 {
         didSet {
             trueAnswers(countTrueAnswers)
@@ -92,17 +94,28 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
         statusStartStop = .stop
     }
     
-    func check() {
+    func check(time: String) {
+        
+        var userAnswer = Session.shared.userAnswer
         
         if Session.shared.userAnswer == math.stringResult {
             print("bingo!")
             Session.shared.userAnswer.removeAll()
             answerStatus = true
+            solutionsArray.trueAnswers! += 1
+            userAnswer += " :" + time
             start()
         } else {
             answerStatus = false
+            solutionsArray.falseAnswers! += 1
+            userAnswer += "(" + math.stringResult + ") : " + time
             stop()
         }
+        
+        print("time: \(userAnswer)")
+        solutionsArray.mathSolutions?.append((math.fullMathProblem ?? "no math") + userAnswer)
+        solutionsArray.date = Date()
+        
     }
     
     func stop() {
@@ -112,6 +125,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     }
     
     func finish() {
-        try? self.gameDelegate?.didEndGame(trueAnswerCount: countTrueAnswers, falseAnswerCount: countFalseAnswers, averageTime: "0:00:00")
+        try? self.gameDelegate?.didEndGame(gameResult: solutionsArray) //(trueAnswerCount: countTrueAnswers, falseAnswerCount: countFalseAnswers)
     }
 }

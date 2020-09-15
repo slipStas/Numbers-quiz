@@ -10,34 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var viewModel: MainViewModel? {
-        didSet {
-            switch viewModel?.statusStartStop {
-            case .start:
-                viewModel?.start()
-                self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
-
-                if timerModel.timerCounter < 10.0 {
-                    timerModel.resumeAnimation()
-                } else {
-                    timerModel.startAllNeedsAnimations(duration: 10, color: UIColor.myRed.cgColor)
-                }
-                timerModel.startTimer()
-                isNumberButtonsEnable = true
-            case .stop:
-                viewModel?.stop()
-
-                if timerModel.timerCounter < 10.0 {
-                    timerModel.pauseTimer()
-                    timerModel.pauseAnimation()
-                }
-
-                isNumberButtonsEnable = false
-            case .none:
-                break
-            }
-        }
-    }
+    var viewModel: MainViewModel?
     
     var isNumberButtonsEnable : Bool? {
         didSet {
@@ -62,7 +35,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = MainViewModel(status: .stop, startStopStatus: { [weak self] (status) in
+        viewModel = MainViewModel(status: .start, startStopStatus: { [weak self] (status) in
         guard let self = self else {return}
         self.startStopButton.setTitle(status.rawValue, for: .normal)
             }, trueAnswers: { [weak self] (trueAnswers) in
@@ -71,7 +44,7 @@ class MainViewController: UIViewController {
             }, falseAnswers: { [weak self] (falseAnswers) in
                 self?.animateAnswerCounter(label: (self?.countFalseAnswersLabel)!, options: .transitionFlipFromBottom)
                 self?.countFalseAnswersLabel.text = String(falseAnswers)
-        })
+            })
         
         viewModel?.gameDelegate = self
         isNumberButtonsEnable = false
@@ -95,42 +68,47 @@ class MainViewController: UIViewController {
     
     @IBAction func startStop(_ sender: UIButton) {
         
+        self.viewModel?.startStopStatus = { [weak self] status in
+            
+            switch status {
+            case .start:
+                self?.timerModel.pauseTimer()
+                self?.timerModel.pauseAnimation()
+            case .stop:
+                guard let timerCounter = self?.timerModel.timerCounter,
+                    let answerStatus = self?.viewModel?.answerStatus else { return }
+                
+                if answerStatus {
+                } else if timerCounter > 0 {
+                    self?.timerModel.startTimer()
+                    self?.timerModel.resumeAnimation()
+                } else if timerCounter == 0 {
+                    self?.timerModel.startTimer()
+                    self?.timerModel.startAllNeedsAnimations(duration: 1)
+                }
+            }
+            
+            self?.startStopButton.setTitle(status.rawValue, for: .normal)
+        }
+        
         switch viewModel?.statusStartStop {
         case .start:
             viewModel?.start()
-            self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
-            
-            if timerModel.timerCounter < 10.0 {
-                timerModel.resumeAnimation()
-            } else {
-                timerModel.startAllNeedsAnimations(duration: 10, color: UIColor.myRed.cgColor)
-            }
-            timerModel.startTimer()
             isNumberButtonsEnable = true
         case .stop:
             viewModel?.stop()
-
-            timerModel.pauseTimer()
-            timerModel.pauseAnimation()
             isNumberButtonsEnable = false
         case .none:
             break
         }
         
         sender.feedback()
-        
-        self.viewModel?.startStopStatus = { [weak self] status in
-            self?.startStopButton.setTitle(status.rawValue, for: .normal)
-        }
     }
     
     @IBAction func check(_ sender: UIButton) {
         
         sender.feedback()
-        timerModel.pauseTimer()
-        timerModel.pauseAnimation()
-        
-        viewModel?.check()
+        viewModel?.check(time: String(timerModel.timerCounter))
                 
         self.answerLabel.text?.removeAll()
         self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
@@ -179,15 +157,26 @@ class MainViewController: UIViewController {
 
 extension MainViewController: MainSceneDelegate {
     
-    func didEndGame(trueAnswerCount: Int, falseAnswerCount: Int, averageTime: String) throws {
+    func didEndGame(gameResult: GameResultModel) throws {
         var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
-        let newRecord = GameResultModel(trueAnswers: trueAnswerCount, falseAnswers: falseAnswerCount, date: Date())
+        let newRecord = GameResultModel(trueAnswers: gameResult.trueAnswers, falseAnswers: gameResult.falseAnswers, date: gameResult.date, mathSolutions: gameResult.mathSolutions)
         records.append(newRecord)
         try? GameRecordsCaretaker.shared.saveResult(result: records)
         
+        gameResult.mathSolutions?.forEach {print($0)}
+        
         self.dismiss(animated: true, completion: nil)
-        print("game over")
-        print("your result:")
-        print("true answers count - \(trueAnswerCount), false answer count - \(falseAnswerCount), average time - \(averageTime)")
     }
+    
+//    func didEndGame(trueAnswerCount: Int, falseAnswerCount: Int) throws {
+//        var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
+//        let newRecord = GameResultModel(trueAnswers: trueAnswerCount, falseAnswers: falseAnswerCount, date: Date())
+//        records.append(newRecord)
+//        try? GameRecordsCaretaker.shared.saveResult(result: records)
+//
+//        self.dismiss(animated: true, completion: nil)
+//        print("game over")
+//        print("your result:")
+//        print("true answers count - \(trueAnswerCount), false answer count - \(falseAnswerCount)")
+//    }
 }

@@ -10,22 +10,26 @@ import UIKit
 
 class TimerModel: UIView {
     
-    let counterSetup = 10.0
+    let counterSetup = 0
     
     var timer : Timer? = Timer()
     
-    var timerCounter = 10.0 {
+    var doubleCounter = 0.0 {
         didSet {
-            if oldValue <= 0.02 {
-                stopTimer()
+            if ((doubleCounter * 100).rounded() / 100).truncatingRemainder(dividingBy: 1) == 0.0 {
+                timerCounter += 1
             }
-            self.timerView.text = String(format: "%.02f", timerCounter)
+        }
+    }
+    var timerCounter = 0 {
+        didSet {
+            self.timerView.text = String(timerCounter)
+            self.startAllNeedsAnimations(duration: 1)
         }
     }
     
     let timerView: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "10.0"
         label.textAlignment = .center
         
         label.layer.backgroundColor = UIColor.systemBackground.cgColor
@@ -61,6 +65,7 @@ class TimerModel: UIView {
     }
 
     func setup(){
+        timerView.text = String(timerCounter)
         backgroundColor = UIColor.clear
         
         layer.addSublayer(circleLayer)
@@ -86,7 +91,8 @@ class TimerModel: UIView {
     }
     
     @objc func timerCountering() {
-        timerCounter -= 0.01
+        
+        doubleCounter += 0.01
     }
     
     func startTimer() {
@@ -120,7 +126,14 @@ class TimerModel: UIView {
         layer.beginTime = timeSincePause
     }
     
-    func startAllNeedsAnimations(duration time: TimeInterval, color: CGColor) {
+    func startAllNeedsAnimations(duration time: TimeInterval) {
+        
+        let randomRedColorMaker = CGFloat.random(in: 0...1)
+        let randomGreenColorMaker = CGFloat.random(in: 0...1)
+        let randomBlueColorMaker = CGFloat.random(in: 0...1)
+        
+        let color = CGColor(srgbRed: randomRedColorMaker, green: randomGreenColorMaker, blue: randomBlueColorMaker, alpha: 1)
+        
         animateCircle(duration: time)
         animateColor(duration: time, color: color)
         animateLabel(duration: time, color: color)
@@ -135,28 +148,32 @@ class TimerModel: UIView {
         animation.toValue = color
         animation.isRemovedOnCompletion = false
         animation.fillMode = CAMediaTimingFillMode.both
-        
-        self.timerView.layer.borderColor = UIColor.red.cgColor
+
+        self.timerView.layer.borderColor = color
         
         animation.isRemovedOnCompletion = true
         
         self.timerView.layer.add(animation, forKey: "animateLabel")
-        
     }
 
     func animateCircle(duration time: TimeInterval) {
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
+        strokeStartAnimation.fromValue = 0
+        strokeStartAnimation.toValue = 1
+        
+        let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeEndAnimation.duration = time
+        strokeEndAnimation.fromValue = 0
+        strokeEndAnimation.toValue = 1.5
+        strokeEndAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
 
-        animation.duration = time
+        circleLayer.strokeEnd = 1
+        
+        let animationGroup = CAAnimationGroup()
+        animationGroup.duration = 1
+        animationGroup.animations = [strokeStartAnimation, strokeEndAnimation]
 
-        animation.fromValue = 0
-        animation.toValue = 1
-
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-
-        circleLayer.strokeEnd = 1.0
-
-        circleLayer.add(animation, forKey: "animateCircle")
+        circleLayer.add(animationGroup, forKey: "animateCircle")
     }
     
     func animateColor(duration time: TimeInterval, color: CGColor) {

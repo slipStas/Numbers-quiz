@@ -8,6 +8,10 @@
 
 import Foundation
 
+//protocol MainSceneDelegate : AnyObject {
+//    func didEndGame(trueAnswerCount: Int, falseAnswerCount: Int) throws
+//}
+
 protocol MainSceneDelegate : AnyObject {
-    func didEndGame(trueAnswerCount: Int, falseAnswerCount: Int, averageTime: String) throws
+    func didEndGame(gameResult: GameResultModel) throws
 }
