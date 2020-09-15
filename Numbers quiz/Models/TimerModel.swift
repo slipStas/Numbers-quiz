@@ -25,6 +25,7 @@ class TimerModel: UIView {
         didSet {
             self.timerView.text = String(timerCounter)
             self.startAllNeedsAnimations(duration: 1)
+            print(timerCounter)
         }
     }
     
@@ -109,6 +110,8 @@ class TimerModel: UIView {
         print("stop timer")
         self.timer?.invalidate()
         self.timer = nil
+        doubleCounter = 0.0
+        timerCounter = 0
     }
     
     func pauseAnimation() {

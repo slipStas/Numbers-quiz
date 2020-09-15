@@ -104,18 +104,18 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             answerStatus = true
             solutionsArray.trueAnswers! += 1
             userAnswer += " :" + time
+            solutionsArray.mathSolutions?.append((math.fullMathProblem ?? "no math") + userAnswer)
             start()
         } else {
+            Session.shared.userAnswer.removeAll()
             answerStatus = false
             solutionsArray.falseAnswers! += 1
             userAnswer += "(" + math.stringResult + ") : " + time
-            stop()
+            solutionsArray.mathSolutions?.append((math.fullMathProblem ?? "no math") + userAnswer)
+            start()
         }
         
-        print("time: \(userAnswer)")
-        solutionsArray.mathSolutions?.append((math.fullMathProblem ?? "no math") + userAnswer)
         solutionsArray.date = Date()
-        
     }
     
     func stop() {
@@ -125,6 +125,6 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     }
     
     func finish() {
-        try? self.gameDelegate?.didEndGame(gameResult: solutionsArray) //(trueAnswerCount: countTrueAnswers, falseAnswerCount: countFalseAnswers)
+        try? self.gameDelegate?.didEndGame(gameResult: solutionsArray) 
     }
 }

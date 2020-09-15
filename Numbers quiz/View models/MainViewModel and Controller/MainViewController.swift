@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     
     @IBOutlet weak var countTrueAnswersLabel: UILabel!
-    @IBOutlet weak var countFalseAnswersLabel: UILabel!
+    @IBOutlet weak var countFalseAnswersLabel: UILabel! 
     
     @IBOutlet weak var numberButtons: UIStackView!
     @IBOutlet weak var startStopButton: NumberButtonModel!
@@ -70,27 +70,10 @@ class MainViewController: UIViewController {
         
         self.viewModel?.startStopStatus = { [weak self] status in
             
-            switch status {
-            case .start:
-                self?.timerModel.pauseTimer()
-                self?.timerModel.pauseAnimation()
-            case .stop:
-                guard let timerCounter = self?.timerModel.timerCounter,
-                    let answerStatus = self?.viewModel?.answerStatus else { return }
-                
-                if answerStatus {
-                } else if timerCounter > 0 {
-                    self?.timerModel.startTimer()
-                    self?.timerModel.resumeAnimation()
-                } else if timerCounter == 0 {
-                    self?.timerModel.startTimer()
-                    self?.timerModel.startAllNeedsAnimations(duration: 1)
-                }
-            }
-            
             self?.startStopButton.setTitle(status.rawValue, for: .normal)
+            self?.startStopButton.isEnabled = false
         }
-        
+                
         switch viewModel?.statusStartStop {
         case .start:
             viewModel?.start()
@@ -101,7 +84,16 @@ class MainViewController: UIViewController {
         case .none:
             break
         }
+        guard let answerStatus = self.viewModel?.answerStatus else { return }
         
+        if answerStatus {
+        } else if self.timerModel.timerCounter > 0 {
+            self.timerModel.startTimer()
+            self.timerModel.resumeAnimation()
+        } else if self.timerModel.timerCounter == 0 {
+            self.timerModel.startTimer()
+            self.timerModel.startAllNeedsAnimations(duration: 1)
+        }
         sender.feedback()
     }
     
@@ -112,6 +104,11 @@ class MainViewController: UIViewController {
                 
         self.answerLabel.text?.removeAll()
         self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
+        
+        timerModel.stopTimer()
+        
+        timerModel.startTimer()
+        timerModel.startAllNeedsAnimations(duration: 1)
     }
     
     @IBAction func pressedButton(_ sender: UIButton) {
@@ -164,19 +161,7 @@ extension MainViewController: MainSceneDelegate {
         try? GameRecordsCaretaker.shared.saveResult(result: records)
         
         gameResult.mathSolutions?.forEach {print($0)}
-        
+        timerModel.stopTimer()
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    func didEndGame(trueAnswerCount: Int, falseAnswerCount: Int) throws {
-//        var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
-//        let newRecord = GameResultModel(trueAnswers: trueAnswerCount, falseAnswers: falseAnswerCount, date: Date())
-//        records.append(newRecord)
-//        try? GameRecordsCaretaker.shared.saveResult(result: records)
-//
-//        self.dismiss(animated: true, completion: nil)
-//        print("game over")
-//        print("your result:")
-//        print("true answers count - \(trueAnswerCount), false answer count - \(falseAnswerCount)")
-//    }
 }
