@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewModel?
     
+    var isGameEnd = false
+    
     var isNumberButtonsEnable : Bool? {
         didSet {
             disableEnableButtons(sender: numberButtons, isEnable: isNumberButtonsEnable ?? false)
@@ -84,13 +86,9 @@ class MainViewController: UIViewController {
         case .none:
             break
         }
-        guard let answerStatus = self.viewModel?.answerStatus else { return }
         
-        if answerStatus {
-        } else if self.timerModel.timerCounter > 0 {
-            self.timerModel.startTimer()
-            self.timerModel.resumeAnimation()
-        } else if self.timerModel.timerCounter == 0 {
+        
+        if !isGameEnd {
             self.timerModel.startTimer()
             self.timerModel.startAllNeedsAnimations(duration: 1)
         }
@@ -108,7 +106,6 @@ class MainViewController: UIViewController {
         timerModel.stopTimer()
         
         timerModel.startTimer()
-        timerModel.startAllNeedsAnimations(duration: 1)
     }
     
     @IBAction func pressedButton(_ sender: UIButton) {
@@ -120,6 +117,7 @@ class MainViewController: UIViewController {
     
     @IBAction func finishGame(_ sender: Any) {
         viewModel?.finish()
+        timerModel.stopTimer()
     }
     
     func prepareLabels() {
@@ -160,8 +158,8 @@ extension MainViewController: MainSceneDelegate {
         records.append(newRecord)
         try? GameRecordsCaretaker.shared.saveResult(result: records)
         
-        gameResult.mathSolutions?.forEach {print($0)}
         timerModel.stopTimer()
+        isGameEnd = true
         self.dismiss(animated: true, completion: nil)
     }
 }

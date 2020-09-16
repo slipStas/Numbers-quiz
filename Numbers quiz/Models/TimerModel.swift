@@ -169,8 +169,6 @@ class TimerModel: UIView {
         strokeEndAnimation.fromValue = 0
         strokeEndAnimation.toValue = 1.5
         strokeEndAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-
-        circleLayer.strokeEnd = 1
         
         let animationGroup = CAAnimationGroup()
         animationGroup.duration = 1
