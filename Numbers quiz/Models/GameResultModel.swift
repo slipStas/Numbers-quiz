@@ -8,9 +8,15 @@
 
 import Foundation
 
+class MathSolution: Codable {
+    var solution: String?
+    var isCorrect: Bool?
+}
+
 struct GameResultModel: Codable {
-    var trueAnswers: Int?
-    var falseAnswers: Int?
-    var date: Date?
-    var mathSolutions: [String]?
+    var trueAnswers: Int
+    var falseAnswers: Int
+    var date: Date
+    var difficulty: String
+    var mathSolutions: [MathSolution]
 }

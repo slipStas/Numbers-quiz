@@ -264,18 +264,28 @@
                                     <constraint firstAttribute="width" secondItem="WJh-zv-xMY" secondAttribute="height" multiplier="1:1" id="qMM-8x-ROx"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzk-vh-SOO" customClass="AnimateConsole" customModule="Numbers_quiz" customModuleProvider="target">
+                                <rect key="frame" x="8" y="215" width="108" height="108"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rzk-vh-SOO" secondAttribute="height" multiplier="1:1" id="RIY-ST-WCl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Rzk-vh-SOO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="0gZ-Wo-cQh"/>
                             <constraint firstItem="76V-EV-SWH" firstAttribute="centerY" secondItem="6KD-pM-Ztx" secondAttribute="centerY" id="4uz-S7-8pk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="76V-EV-SWH" secondAttribute="trailing" constant="10" id="7ph-ox-0yw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2FH-MY-aY4" secondAttribute="bottom" id="AdR-KL-2aG"/>
                             <constraint firstItem="WJh-zv-xMY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cxz-mW-z0q"/>
+                            <constraint firstItem="WJh-zv-xMY" firstAttribute="leading" secondItem="Rzk-vh-SOO" secondAttribute="trailing" constant="16" id="NBe-gS-nY4"/>
                             <constraint firstItem="WJh-zv-xMY" firstAttribute="top" secondItem="76V-EV-SWH" secondAttribute="bottom" constant="112" id="NoA-uI-k55"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wFc-c6-qYr" secondAttribute="trailing" constant="3" id="Prl-tz-LgF"/>
                             <constraint firstItem="6KD-pM-Ztx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="QQY-Gb-0f9"/>
                             <constraint firstItem="6KD-pM-Ztx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="SKs-ob-DEV"/>
+                            <constraint firstItem="Rzk-vh-SOO" firstAttribute="centerY" secondItem="WJh-zv-xMY" secondAttribute="centerY" id="U6r-80-tIg"/>
                             <constraint firstItem="wFc-c6-qYr" firstAttribute="top" secondItem="M1e-qg-RVS" secondAttribute="bottom" constant="8" id="Yq3-KD-6dk"/>
                             <constraint firstItem="2FH-MY-aY4" firstAttribute="top" secondItem="wFc-c6-qYr" secondAttribute="bottom" constant="3" id="aLQ-hf-F8w"/>
                             <constraint firstItem="76V-EV-SWH" firstAttribute="leading" secondItem="6KD-pM-Ztx" secondAttribute="trailing" constant="10" id="sDU-2F-Vuc"/>
@@ -287,6 +297,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WoI-17-Eif"/>
                     <connections>
+                        <outlet property="animateConsole" destination="Rzk-vh-SOO" id="6Vm-qE-Hkq"/>
                         <outlet property="answerLabel" destination="76V-EV-SWH" id="YUT-pN-uOy"/>
                         <outlet property="checkButton" destination="1TR-64-Ugv" id="QTr-U4-zIq"/>
                         <outlet property="countFalseAnswersLabel" destination="zNF-dF-LFI" id="G46-vc-Bav"/>
@@ -299,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-403" y="-24"/>
+            <point key="canvasLocation" x="-404.34782608695656" y="-24.107142857142858"/>
         </scene>
         <!--Leader Board View Controller-->
         <scene sceneID="Dxf-r7-KsM">
@@ -327,7 +338,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFd-lM-TQx">
-                                                    <rect key="frame" x="8" y="8" width="228" height="29"/>
+                                                    <rect key="frame" x="8" y="8" width="285" height="29"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp7-Qq-HKY">
                                                             <rect key="frame" x="0.0" y="0.0" width="57" height="29"/>
@@ -353,6 +364,12 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn5-96-qc4">
+                                                            <rect key="frame" x="228" y="0.0" width="57" height="29"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -368,6 +385,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="PfK-uG-1tb" id="8YC-CS-biV"/>
+                                            <outlet property="difficulty" destination="bn5-96-qc4" id="F36-m5-q9F"/>
                                             <outlet property="falseCount" destination="Nm1-3S-3Uz" id="9qG-h1-x6d"/>
                                             <outlet property="score" destination="Sp7-Qq-HKY" id="PQG-zb-n2x"/>
                                             <outlet property="slash" destination="MOw-lz-04T" id="IR5-re-BLV"/>

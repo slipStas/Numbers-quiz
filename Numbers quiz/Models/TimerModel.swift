@@ -25,7 +25,6 @@ class TimerModel: UIView {
         didSet {
             self.timerView.text = String(timerCounter)
             self.startAllNeedsAnimations(duration: 1)
-            print(timerCounter)
         }
     }
     
@@ -41,7 +40,6 @@ class TimerModel: UIView {
         label.layer.borderWidth = 3
         label.layer.borderColor = UIColor.myOrange.cgColor
         
-       
         return label
     }()
     

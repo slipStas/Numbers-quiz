@@ -29,10 +29,9 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var numberButtons: UIStackView!
     @IBOutlet weak var startStopButton: NumberButtonModel!
-        
     @IBOutlet weak var checkButton: NumberButtonModel!
-    
     @IBOutlet weak var timerModel: TimerModel!
+    @IBOutlet weak var animateConsole: AnimateConsole!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,15 +96,20 @@ class MainViewController: UIViewController {
     
     @IBAction func check(_ sender: UIButton) {
         
+        animateConsole.animateLabel.text = viewModel?.math.result.description
+
         sender.feedback()
         viewModel?.check(time: String(timerModel.timerCounter))
                 
         self.answerLabel.text?.removeAll()
         self.animateAnswerCounter(label: self.taskLabel, options: .transitionFlipFromBottom)
+                
+        animateConsole.animateLabel(duration: 0.5)
         
         timerModel.stopTimer()
         
         timerModel.startTimer()
+        
     }
     
     @IBAction func pressedButton(_ sender: UIButton) {
@@ -154,7 +158,23 @@ extension MainViewController: MainSceneDelegate {
     
     func didEndGame(gameResult: GameResultModel) throws {
         var records = (try? GameRecordsCaretaker.shared.loadResult()) ?? []
-        let newRecord = GameResultModel(trueAnswers: gameResult.trueAnswers, falseAnswers: gameResult.falseAnswers, date: gameResult.date, mathSolutions: gameResult.mathSolutions)
+        guard let difficulty = viewModel?.math.difficulty else {return}
+        
+        var difficultyString = ""
+        switch difficulty {
+        case 0:
+            difficultyString = Difficulty.easy.rawValue
+        case 1:
+            difficultyString = Difficulty.normal.rawValue
+        case 2:
+            difficultyString = Difficulty.hard.rawValue
+        case 3:
+            difficultyString = Difficulty.expert.rawValue
+        default:
+            break
+        }
+        
+        let newRecord = GameResultModel(trueAnswers: gameResult.trueAnswers, falseAnswers: gameResult.falseAnswers, date: gameResult.date, difficulty: difficultyString, mathSolutions: gameResult.mathSolutions)
         records.append(newRecord)
         try? GameRecordsCaretaker.shared.saveResult(result: records)
         

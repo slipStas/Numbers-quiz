@@ -12,7 +12,7 @@ class ResultsArrayViewController: UIViewController {
 
     @IBOutlet weak var resultsArrayTableView: UITableView!
     
-    var resultArray : [String] = []
+    var resultArray : [MathSolution] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,18 @@ extension ResultsArrayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultArrayCell", for: indexPath) as! ResultsArrayTableViewCell
         
-        cell.resultTextLabel.text = resultArray[indexPath.row]
+        cell.resultTextLabel.text = resultArray[indexPath.row].solution
+        
+        switch resultArray[indexPath.row].isCorrect {
+        case true:
+            cell.resultTextLabel.textColor = .myGreen
+        case false:
+            cell.resultTextLabel.textColor = .myRed
+        case .none:
+            break
+        case .some(_):
+            break
+        }
         
         return cell
     }

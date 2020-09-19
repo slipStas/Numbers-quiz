@@ -56,10 +56,11 @@ extension LeaderBoardViewController: UITableViewDataSource {
         dateFormatter.dateFormat = "HH:mm  EEE, d MMMM"
         
         cell.score.text = "Score: "
-        cell.trueCount.text = String(record.trueAnswers ?? 0)
+        cell.trueCount.text = String(record.trueAnswers )
         cell.slash.text = " / "
-        cell.falseCount.text = String(record.falseAnswers ?? 0)
-        cell.dateLabel.text = dateFormatter.string(from: record.date ?? Date())
+        cell.falseCount.text = String(record.falseAnswers )
+        cell.dateLabel.text = dateFormatter.string(from: record.date )
+        cell.difficulty.text = "  difficulty - \(record.difficulty)"
         
         return cell
     }
@@ -69,7 +70,7 @@ extension LeaderBoardViewController: UITableViewDataSource {
             if let destinationVC = segue.destination as? ResultsArrayViewController {
                 
                 let recordsInRow : GameResultModel = self.records[leaderBoardTableView.indexPathForSelectedRow!.row]
-                destinationVC.resultArray = recordsInRow.mathSolutions ?? []
+                destinationVC.resultArray = recordsInRow.mathSolutions
             }
         }
     }

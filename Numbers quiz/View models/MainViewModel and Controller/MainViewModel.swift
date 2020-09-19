@@ -52,7 +52,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
     private let difficultyStrategyFacade = DifficultyStrategyFacade()
     
     var math = MathProblemModel()
-    var solutionsArray = GameResultModel(trueAnswers: 0, falseAnswers: 0, date: Date(), mathSolutions: [])
+    var solutionsArray = GameResultModel(trueAnswers: 0, falseAnswers: 0, date: Date(), difficulty: "", mathSolutions: [])
     var countTrueAnswers = 0 {
         didSet {
             trueAnswers(countTrueAnswers)
@@ -102,16 +102,26 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput {
             print("bingo!")
             Session.shared.userAnswer.removeAll()
             answerStatus = true
-            solutionsArray.trueAnswers! += 1
-            userAnswer += " :" + time
-            solutionsArray.mathSolutions?.append((math.fullMathProblem ?? "no math") + userAnswer)
+            solutionsArray.trueAnswers += 1
+            userAnswer += " : " + time + " sec."
+            
+            let solutions = MathSolution()
+            solutions.solution = (math.fullMathProblem ?? "no math") + " " + userAnswer
+            solutions.isCorrect = true
+            
+            solutionsArray.mathSolutions.append(solutions)
             start()
         } else {
             Session.shared.userAnswer.removeAll()
             answerStatus = false
-            solutionsArray.falseAnswers! += 1
-            userAnswer += "(" + math.stringResult + ") : " + time
-            solutionsArray.mathSolutions?.append((math.fullMathProblem ?? "no math") + userAnswer)
+            solutionsArray.falseAnswers += 1
+            userAnswer += "(" + math.stringResult + ") : " + time + " sec."
+            
+            let solutions = MathSolution()
+            solutions.solution = (math.fullMathProblem ?? "no math") + " " + userAnswer
+            solutions.isCorrect = false
+            
+            solutionsArray.mathSolutions.append(solutions)
             start()
         }
         

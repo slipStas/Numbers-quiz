@@ -15,12 +15,14 @@ class LeaderBoardTableViewCell: UITableViewCell {
     @IBOutlet weak var slash: UILabel!
     @IBOutlet weak var falseCount: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var difficulty: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.trueCount.textColor = .myGreen
         self.falseCount.textColor = .myRed
+        self.difficulty.textColor = .systemGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
