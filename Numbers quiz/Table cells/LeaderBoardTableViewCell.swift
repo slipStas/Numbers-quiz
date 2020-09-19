@@ -10,7 +10,7 @@ import UIKit
 
 class LeaderBoardTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var Score: UILabel!
+    @IBOutlet weak var score: UILabel!
     @IBOutlet weak var trueCount: UILabel!
     @IBOutlet weak var slash: UILabel!
     @IBOutlet weak var falseCount: UILabel!
@@ -25,8 +25,17 @@ class LeaderBoardTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        
+    }
+    
+    override func prepareForReuse() {
+        
+        score.text = nil
+        trueCount.text = nil
+        slash.text = nil
+        falseCount.text = nil
+        dateLabel.text = nil
     }
 
 }

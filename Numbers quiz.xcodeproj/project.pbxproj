@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8E06161324CF5A3900A0FEF4 /* MathProblemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */; };
 		8E06161524CF61E400A0FEF4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06161424CF61E400A0FEF4 /* Session.swift */; };
+		8E29A6A825162EF3003A90F0 /* ResultsArrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29A6A725162EF3003A90F0 /* ResultsArrayViewController.swift */; };
+		8E29A6AB25162F8E003A90F0 /* ResultsArrayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E29A6AA25162F8E003A90F0 /* ResultsArrayTableViewCell.swift */; };
 		8E2E6100250A4C5900625F9C /* SegmentedControlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */; };
 		8E2E6102250A4DB200625F9C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E6101250A4DB200625F9C /* UIView.swift */; };
 		8E3AEA7824DB885D00C96001 /* MainSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */; };
@@ -41,6 +43,8 @@
 		8C079F31169E3FBB1B368E7F /* Pods-Numbers quiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numbers quiz.debug.xcconfig"; path = "Target Support Files/Pods-Numbers quiz/Pods-Numbers quiz.debug.xcconfig"; sourceTree = "<group>"; };
 		8E06161224CF5A3900A0FEF4 /* MathProblemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathProblemModel.swift; sourceTree = "<group>"; };
 		8E06161424CF61E400A0FEF4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		8E29A6A725162EF3003A90F0 /* ResultsArrayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsArrayViewController.swift; sourceTree = "<group>"; };
+		8E29A6AA25162F8E003A90F0 /* ResultsArrayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsArrayTableViewCell.swift; sourceTree = "<group>"; };
 		8E2E60FF250A4C5900625F9C /* SegmentedControlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlModel.swift; sourceTree = "<group>"; };
 		8E2E6101250A4DB200625F9C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8E3AEA7724DB885D00C96001 /* MainSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			children = (
 				8E69F70924DE327200FA3B46 /* LeaderBoardViewController.swift */,
 				8E655D692506759100FFF439 /* StartViewController.swift */,
+				8E29A6A725162EF3003A90F0 /* ResultsArrayViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE703EA24DE2CCD007876B6 /* LeaderBoardTableViewCell.swift */,
+				8E29A6AA25162F8E003A90F0 /* ResultsArrayTableViewCell.swift */,
 			);
 			path = "Table cells";
 			sourceTree = "<group>";
@@ -167,9 +173,9 @@
 			isa = PBXGroup;
 			children = (
 				8E655D772508D72D00FFF439 /* Patterns */,
-				8EE703E924DE2CA6007876B6 /* Table cells */,
 				8E655D7A250A3B0000FFF439 /* View models */,
 				8EE703E824DE2BF3007876B6 /* Controllers */,
+				8EE703E924DE2CA6007876B6 /* Table cells */,
 				8EFB41EC24CDAA3D0085BDA5 /* Models */,
 				8EFB41D124CD9F580085BDA5 /* AppDelegate.swift */,
 				8EFB41D724CD9F580085BDA5 /* Main.storyboard */,
@@ -325,7 +331,9 @@
 				8E2E6100250A4C5900625F9C /* SegmentedControlModel.swift in Sources */,
 				8E69F70C24DE3A7F00FA3B46 /* GameResultModel.swift in Sources */,
 				8E655D7225077ECA00FFF439 /* Difficulty.swift in Sources */,
+				8E29A6AB25162F8E003A90F0 /* ResultsArrayTableViewCell.swift in Sources */,
 				8E4EA1A624CDF5DA004D10EB /* MainViewModel.swift in Sources */,
+				8E29A6A825162EF3003A90F0 /* ResultsArrayViewController.swift in Sources */,
 				8E655D6E25068A9F00FFF439 /* ColorsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

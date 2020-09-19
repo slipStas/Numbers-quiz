@@ -13,6 +13,7 @@ class LeaderBoardViewController: UIViewController {
     @IBOutlet weak var leaderBoardTableView: UITableView! {
         didSet {
             self.leaderBoardTableView.dataSource = self
+            self.leaderBoardTableView.delegate = self
         }
     }
     
@@ -26,6 +27,12 @@ class LeaderBoardViewController: UIViewController {
         records.reverse()
         
         self.leaderBoardTableView.reloadData()
+    }
+}
+
+extension LeaderBoardViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -43,16 +50,27 @@ extension LeaderBoardViewController: UITableViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium
         dateFormatter.dateStyle = DateFormatter.Style.medium
+        
         /// for russian language
         /// dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "HH:mm  EEE, d MMMM"
         
-        cell.Score.text = "Score: "
+        cell.score.text = "Score: "
         cell.trueCount.text = String(record.trueAnswers ?? 0)
         cell.slash.text = " / "
         cell.falseCount.text = String(record.falseAnswers ?? 0)
         cell.dateLabel.text = dateFormatter.string(from: record.date ?? Date())
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier, identifier == "array of results" {
+            if let destinationVC = segue.destination as? ResultsArrayViewController {
+                
+                let recordsInRow : GameResultModel = self.records[leaderBoardTableView.indexPathForSelectedRow!.row]
+                destinationVC.resultArray = recordsInRow.mathSolutions ?? []
+            }
+        }
     }
 }
