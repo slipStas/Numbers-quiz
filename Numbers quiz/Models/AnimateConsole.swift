@@ -48,7 +48,7 @@ class AnimateConsole: UIView {
             self.animateLabel.alpha = 0.4
         } completion: { (status) in
             self.animateLabel.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-            self.animateLabel.alpha = 0
+            self.animateLabel.alpha = 0.1
         }
 
     }
