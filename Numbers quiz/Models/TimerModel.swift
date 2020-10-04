@@ -77,6 +77,7 @@ class TimerModel: UIView {
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width) / 2, startAngle: 0.0, endAngle: CGFloat(Double.pi * 2.0), clockwise: true)
 
         circleLayer.path = circlePath.cgPath
+        circleLayer.lineCap = .round
         
         timerView.frame = bounds
                 
